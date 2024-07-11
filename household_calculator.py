@@ -66,7 +66,7 @@ def collect_household_data(data, generate_household_id):
                         'NEGERI': selected_negeri,
                         'DAERAH': selected_daerah,
                         'STRATA': selected_strata,
-                        'TOTAL PAKW': total_pakw,
+                        'TOTAL PAKW': f"RM {total_pakw:.2f}",  # Format with RM and 2 decimal points
                         'TOTAL_HH': num_households  # Add total number of households
                     }
 
@@ -76,6 +76,6 @@ def collect_household_data(data, generate_household_id):
     # Set TOTAL PAKW HH for each entry if there are multiple households
     if num_households > 1:
         for option in selected_options_list:
-            option['TOTAL PAKW HH'] = total_pakw_hh
+            option['TOTAL PAKW HH'] = f"RM {total_pakw_hh:.2f}"  # Format with RM and 2 decimal points
 
     return selected_options_list
