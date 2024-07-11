@@ -85,11 +85,11 @@ if st.button('Calculate Total Household Expenditure'):
 
         # Save to CSV
         try:
-            history = pd.read_csv('pakw_v1user_input_history.csv')
+            history = pd.read_csv('user_input_history.csv')
             history = pd.concat([history, selected_options_df], ignore_index=True)
             history.to_csv('user_input_history.csv', index=False)
         except FileNotFoundError:
-            selected_options_df.to_csv('pakw_v1/user_input_history.csv', index=False)
+            selected_options_df.to_csv('user_input_history.csv', index=False)
 
         # Display selected options in a minimalist table
         st.write('Selected Options:')
