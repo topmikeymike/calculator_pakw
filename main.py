@@ -65,7 +65,7 @@ selected_options_list = collect_household_data(data, generate_household_id)
 if 'calculate_clicked' not in st.session_state:
     st.session_state.calculate_clicked = False
 
-if st.button('Calculate Total Household Expenditure'):
+if st.button('Calculate Total PAKW Expenditure'):
     st.session_state.calculate_clicked = True
     if selected_options_list:
         st.write('Total Household Expenditure:')
