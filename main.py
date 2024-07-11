@@ -56,7 +56,7 @@ st.markdown("Perbelanjaan Asas Kehidupan Wajar | (PAKW)")
 st.markdown("This calculator calculates the total PAKW expenditure based on user inputs. ")
 
 # Load the data
-data = load_data('/Users/michael.igo/Documents/project/prototype-main/pakw_v1/pakw_calculator_referal.csv')
+data = load_data('pakw_calculator_referal.csv')
 
 # Collect household data
 selected_options_list = collect_household_data(data, generate_household_id)
@@ -85,11 +85,11 @@ if st.button('Calculate Total Household Expenditure'):
 
         # Save to CSV
         try:
-            history = pd.read_csv('/Users/michael.igo/Documents/project/prototype-main/pakw_v1user_input_history.csv')
+            history = pd.read_csv('pakw_v1user_input_history.csv')
             history = pd.concat([history, selected_options_df], ignore_index=True)
-            history.to_csv('/Users/michael.igo/Documents/project/prototype-main/pakw_v1/user_input_history.csv', index=False)
+            history.to_csv('user_input_history.csv', index=False)
         except FileNotFoundError:
-            selected_options_df.to_csv('/Users/michael.igo/Documents/project/prototype-main/pakw_v1/user_input_history.csv', index=False)
+            selected_options_df.to_csv('pakw_v1/user_input_history.csv', index=False)
 
         # Display selected options in a minimalist table
         st.write('Selected Options:')
