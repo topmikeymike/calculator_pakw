@@ -71,13 +71,13 @@ if st.button('Calculate Total PAKW Expenditure'):
         st.write('Total Household Expenditure:')
         total_household_expenditure = sum(option['TOTAL PAKW'] for option in selected_options_list)
         total_household_expenditure_formatted = f"{total_household_expenditure:.2f}"
-        st.write(f'TOTAL PAKW for all households: {total_household_expenditure_formatted}')
+        st.write(f'TOTAL PAKW for all households: RM  {total_household_expenditure_formatted}')
 
         # Display TOTAL PAKW HH for all households if applicable
         if selected_options_list[0]['TOTAL_HH'] > 1:
             total_pakw_hh = selected_options_list[0]['TOTAL PAKW HH']
             total_pakw_hh_formatted = f"{total_pakw_hh:.2f}"
-            st.write(f'TOTAL PAKW HH for all households: {total_pakw_hh_formatted}')
+            st.write(f'TOTAL PAKW HH for all households: RM  {total_pakw_hh_formatted}')
 
         # Save selected options to CSV
         selected_options_df = pd.DataFrame(selected_options_list)
