@@ -3,7 +3,7 @@ import pandas as pd
 import uuid
 
 st.set_page_config(
-    page_title="PAKW Calculator Apps",
+    page_title="Aplikasi Kalkulator PAKW",
     page_icon="🧊",
     #layout="wide",
     initial_sidebar_state="expanded",
@@ -51,9 +51,9 @@ def generate_household_id():
     return st.session_state.household_id
 
 # Header
-st.title("Household Expenditure Calculator")
+st.title("Kalkulator Perbelanjaan Isi Rumah")
 st.markdown("Perbelanjaan Asas Kehidupan Wajar | (PAKW)")
-st.markdown("This calculator calculates the total PAKW expenditure based on user inputs. ")
+st.markdown("Kalkulator ini mengira jumlah perbelanjaan PAKW berdasarkan input pengguna.")
 
 # Load the data
 data = load_data('pakw_calculator_referal.csv')
@@ -65,19 +65,16 @@ selected_options_list = collect_household_data(data, generate_household_id)
 if 'calculate_clicked' not in st.session_state:
     st.session_state.calculate_clicked = False
 
-if st.button('Calculate Total PAKW Expenditure'):
+if st.button('Kira Jumlah Perbelanjaan Isi Rumah'):
     st.session_state.calculate_clicked = True
     if selected_options_list:
-        st.write('Total Household Expenditure:')
+        st.write('Jumlah Perbelanjaan Isi Rumah:')
         total_household_expenditure = sum(option['TOTAL PAKW'] for option in selected_options_list)
-        total_household_expenditure_formatted = f"{total_household_expenditure:.2f}"
-        st.write(f'TOTAL PAKW for all households: RM  {total_household_expenditure_formatted}')
+        st.write(f'TOTAL PAKW untuk semua isi rumah: {total_household_expenditure}')
 
         # Display TOTAL PAKW HH for all households if applicable
         if selected_options_list[0]['TOTAL_HH'] > 1:
-            total_pakw_hh = selected_options_list[0]['TOTAL PAKW HH']
-            total_pakw_hh_formatted = f"{total_pakw_hh:.2f}"
-            st.write(f'TOTAL PAKW HH for all households: RM  {total_pakw_hh_formatted}')
+            st.write(f'TOTAL PAKW HH untuk semua isi rumah: {selected_options_list[0]["TOTAL PAKW HH"]}')
 
         # Save selected options to CSV
         selected_options_df = pd.DataFrame(selected_options_list)
@@ -95,28 +92,22 @@ if st.button('Calculate Total PAKW Expenditure'):
             selected_options_df.to_csv('user_input_history.csv', index=False)
 
         # Display selected options in a minimalist table
-        st.write('Selected Options:')
+        st.write('Pilihan yang Dipilih:')
         # Only select relevant columns for display
         display_columns = ['HOUSEHOLD_ID', 'UMUR_KSH', 'JANTINA', 'NEGERI', 'DAERAH', 'STRATA', 'TOTAL PAKW']
         if selected_options_list[0]['TOTAL_HH'] > 1:
             display_columns.append('TOTAL PAKW HH')
         display_columns.append('TOTAL_HH')
-
-        # Format TOTAL PAKW and TOTAL PAKW HH columns to 2 decimal places
-        selected_options_df['TOTAL PAKW'] = selected_options_df['TOTAL PAKW'].map(lambda x: f"{x:.2f}")
-        if 'TOTAL PAKW HH' in selected_options_df.columns:
-            selected_options_df['TOTAL PAKW HH'] = selected_options_df['TOTAL PAKW HH'].map(lambda x: f"{x:.2f}")
-
         st.dataframe(selected_options_df[display_columns], width=1000)  # Set width to accommodate all columns
 
 if st.session_state.calculate_clicked:
-    if st.button('Recalculate'):
+    if st.button('Kira Semula'):
         reset_session_state()
         st.experimental_rerun()
 
 # Footer
 language_dict = {
-    'footer': '© 2024 Household Expenditure Calculator',
+    'footer': '© 2024 Kalkulator Perbelanjaan Isi Rumah',
     'footer2': 'BANK IN DULU MAT'
 }
 
