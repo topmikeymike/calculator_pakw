@@ -31,7 +31,8 @@ def collect_household_data(data, generate_household_id):
         selected_strata = st.radio('STRATA', strata_options, key=f'STRATA_{1}')
     else:
         selected_strata = st.radio('STRATA', ["Pilih"], key=f'STRATA_{1}')
-
+        
+    st.markdown("<h2 style='font-size:20px;' >Langkah 5 : Masukkan maklumat ahli isi rumah</h2>", unsafe_allow_html=True)
     for household_id in range(num_households):
         household_uuid = generate_household_id()  # Generate unique household ID for the session
     
