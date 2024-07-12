@@ -121,7 +121,7 @@ if st.session_state.calculate_clicked:
         st.write(
             f"""
             <p style='font-size:16px; font-weight:bold;'>
-                TOTAL PAKW untuk semua isi rumah: RM {total_household_expenditure}
+                TOTAL PAKW untuk semua isi rumah: RM {total_household_expenditure:.2f}
                 <span class='info-icon'>𝒾
                     <span class='tooltip'>This is the total expenditure for all households calculated based on the input data.</span>
                 </span>
@@ -135,7 +135,7 @@ if st.session_state.calculate_clicked:
             st.write(
                 f"""
                 <p style='font-size:16px; font-weight:bold;'>
-                    TOTAL PAKW HH untuk semua isi rumah: {selected_options_list[0]["TOTAL PAKW HH"]}
+                    TOTAL PAKW HH untuk semua isi rumah: RM {selected_options_list[0]["TOTAL PAKW HH"]:.2f}
                     <span class='info-icon'>𝒾
                         <span class='tooltip'>This is the total PAKW for all households.</span>
                     </span>
