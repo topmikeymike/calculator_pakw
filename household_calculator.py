@@ -7,11 +7,13 @@ def load_data(file):
     return pd.read_csv(file)
 
 def collect_household_data(data, generate_household_id):
+    st.markdown("<h2 style='font-size:20px;' >Langkah 1 : Jumlah isi rumah</h2>", unsafe_allow_html=True)
     num_households = st.number_input('Masukkan jumlah isi rumah', min_value=1, value=1, step=1)
     selected_options_list = []
     total_pakw_hh = 0
 
     # Select Negeri
+    st.markdown("<h2 style='font-size:22px;' >Langkah 2 : Masukkan negeri</h2>", unsafe_allow_html=True)
     selected_negeri = st.selectbox('NEGERI', ["Pilih"] + list(data['NEGERI'].unique()), key=f'NEGERI_{1}')
 
     # Filter Daerah options based on selected Negeri
