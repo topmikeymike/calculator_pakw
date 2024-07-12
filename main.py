@@ -69,7 +69,8 @@ selected_options_list = collect_household_data(data, generate_household_id)
 if 'calculate_clicked' not in st.session_state:
     st.session_state.calculate_clicked = False
 
-if st.button('Kira Jumlah Perbelanjaan Isi Rumah'):
+
+if st.button("<h1 style='font-size:24px; font-weight:bold;'>Kira Jumlah Perbelanjaan Isi Rumah</h1>"):
     st.session_state.calculate_clicked = True
     if selected_options_list:
         
