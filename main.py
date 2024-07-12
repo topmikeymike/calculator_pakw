@@ -77,7 +77,7 @@ st.markdown('<div class="button-space"></div>', unsafe_allow_html=True)
 
 if st.button('Kira Jumlah Perbelanjaan Isi Rumah', key='calculate', help='Tekan untuk mengira jumlah perbelanjaan'):
 #if st.button('Kira Jumlah Perbelanjaan Isi Rumah'):
-    if st.session_state.calculate_clicked:
+if st.session_state.calculate_clicked:
     if selected_options_list:
         st.write("<p style='font-size:20px; font-weight:bold;'>Jumlah Perbelanjaan Isi Rumah</p>", unsafe_allow_html=True)
         total_household_expenditure = sum(option['TOTAL PAKW'] for option in selected_options_list)
