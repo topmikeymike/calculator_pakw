@@ -13,10 +13,11 @@ def collect_household_data(data, generate_household_id):
     total_pakw_hh = 0
 
     # Select Negeri
-    st.markdown("<h2 style='font-size:22px;' >Langkah 2 : Masukkan negeri</h2>", unsafe_allow_html=True)
+    st.markdown("<h2 style='font-size:20px;' >Langkah 2 : Masukkan negeri</h2>", unsafe_allow_html=True)
     selected_negeri = st.selectbox('NEGERI', ["Pilih"] + list(data['NEGERI'].unique()), key=f'NEGERI_{1}')
 
     # Filter Daerah options based on selected Negeri
+    st.markdown("<h2 style='font-size:20px;' >Langkah 3 : Masukkan daerah</h2>", unsafe_allow_html=True)
     if selected_negeri != "Pilih":
         daerah_options = list(data[data['NEGERI'] == selected_negeri]['DAERAH'].unique())
         selected_daerah = st.selectbox('DAERAH', ["Pilih"] + daerah_options, key=f'DAERAH_{1}')
