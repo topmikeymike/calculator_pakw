@@ -37,6 +37,42 @@ st.markdown(
     .button-space {
         margin-top: 20px;
     }
+    .info-icon {
+        display: inline-block;
+        margin-left: 5px;
+        cursor: pointer;
+        color: blue;
+    }
+    .info-icon:hover .tooltip {
+        visibility: visible;
+        opacity: 1;
+    }
+    .tooltip {
+        visibility: hidden;
+        width: 200px;
+        background-color: #555;
+        color: #fff;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px;
+        position: absolute;
+        z-index: 1;
+        bottom: 125%; 
+        left: 50%;
+        margin-left: -100px;
+        opacity: 0;
+        transition: opacity 0.3s;
+    }
+    .tooltip::after {
+        content: "";
+        position: absolute;
+        top: 100%;
+        left: 50%;
+        margin-left: -5px;
+        border-width: 5px;
+        border-style: solid;
+        border-color: #555 transparent transparent transparent;
+    }
     </style>
     """,
     unsafe_allow_html=True,
@@ -58,8 +94,8 @@ def generate_household_id():
 # Header
 st.title("Kalkulator Perbelanjaan Isi Rumah 🧮")
 
-st.markdown("<h1 style='font-size:25px; font-weight:bold;'>Perbelanjaan Asas Kehidupan Wajar | (PAKW)</h1>", unsafe_allow_html=True)
-st.markdown("<h2 style='font-size:21px;'>Kalkulator ini mengira jumlah perbelanjaan PAKW berdasarkan input pengguna.</h2>", unsafe_allow_html=True)
+st.markdown("<h1 style='font-size:24px; font-weight:bold;'>Perbelanjaan Asas Kehidupan Wajar | (PAKW)</h1>", unsafe_allow_html=True)
+st.markdown("<h2 style='font-size:22px;'>Kalkulator ini mengira jumlah perbelanjaan PAKW berdasarkan input pengguna.</h2>", unsafe_allow_html=True)
 
 # Load the data
 data = load_data('pakw_calculator_referal.csv')
@@ -81,11 +117,31 @@ if st.session_state.calculate_clicked:
     if selected_options_list:
         st.write("<p style='font-size:20px; font-weight:bold;'>Jumlah Perbelanjaan Isi Rumah</p>", unsafe_allow_html=True)
         total_household_expenditure = sum(option['TOTAL PAKW'] for option in selected_options_list)
-        st.write(f"<p style='font-size:16px; font-weight:bold;'>TOTAL PAKW untuk semua isi rumah: RM {total_household_expenditure}</p>", unsafe_allow_html=True)
+        st.write(
+            f"""
+            <p style='font-size:16px; font-weight:bold;'>
+                TOTAL PAKW untuk semua isi rumah: RM {total_household_expenditure}
+                <span class='info-icon'>ℹ️
+                    <span class='tooltip'>This is the total expenditure for all households calculated based on the input data.</span>
+                </span>
+            </p>
+            """,
+            unsafe_allow_html=True
+        )
 
         # Display TOTAL PAKW HH for all households if applicable
         if selected_options_list[0]['TOTAL_HH'] > 1:
-            st.write(f"<p style='font-size:16px; font-weight:bold;'>TOTAL PAKW HH untuk semua isi rumah: RM {selected_options_list[0]['TOTAL PAKW HH']}</p>", unsafe_allow_html=True)
+            st.write(
+                f"""
+                <p style='font-size:16px; font-weight:bold;'>
+                    TOTAL PAKW HH untuk semua isi rumah: {selected_options_list[0]["TOTAL PAKW HH"]}
+                    <span class='info-icon'>ℹ️
+                        <span class='tooltip'>This is the total PAKW for all households.</span>
+                    </span>
+                </p>
+                """,
+                unsafe_allow_html=True
+            )
 
         # Save selected options to CSV
         selected_options_df = pd.DataFrame(selected_options_list)
@@ -103,7 +159,7 @@ if st.session_state.calculate_clicked:
             selected_options_df.to_csv('user_input_history.csv', index=False)
 
         # Display selected options in a minimalist table
-        st.write("<p style='font-size:16px; font-weight:bold;'>Pilihan yang Dipilih:</p>", unsafe_allow_html=True)
+        st.write("<p style='font-size:20px; font-weight:bold;'>Pilihan yang Dipilih:</p>", unsafe_allow_html=True)
         # Only select relevant columns for display
         display_columns = ['HOUSEHOLD_ID', 'UMUR_KSH', 'JANTINA', 'NEGERI', 'DAERAH', 'STRATA', 'TOTAL PAKW']
         if selected_options_list[0]['TOTAL_HH'] > 1:
