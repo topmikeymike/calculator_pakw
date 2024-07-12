@@ -42,6 +42,7 @@ st.markdown(
         margin-left: 5px;
         cursor: pointer;
         color: blue;
+        font-size: 14px;
     }
     .info-icon:hover .tooltip {
         visibility: visible;
@@ -121,7 +122,7 @@ if st.session_state.calculate_clicked:
             f"""
             <p style='font-size:16px; font-weight:bold;'>
                 TOTAL PAKW untuk semua isi rumah: RM {total_household_expenditure}
-                <span class='info-icon'>ℹ️
+                <span class='info-icon'>𝒾
                     <span class='tooltip'>This is the total expenditure for all households calculated based on the input data.</span>
                 </span>
             </p>
@@ -135,7 +136,7 @@ if st.session_state.calculate_clicked:
                 f"""
                 <p style='font-size:16px; font-weight:bold;'>
                     TOTAL PAKW HH untuk semua isi rumah: {selected_options_list[0]["TOTAL PAKW HH"]}
-                    <span class='info-icon'>ℹ️
+                    <span class='info-icon'>𝒾
                         <span class='tooltip'>This is the total PAKW for all households.</span>
                     </span>
                 </p>
