@@ -32,6 +32,9 @@ st.markdown(
     .footer-text:hover {
         color: grey;
     }
+    .button-space {
+        margin-top: 20px;
+    }
     </style>
     """,
     unsafe_allow_html=True,
@@ -69,9 +72,11 @@ selected_options_list = collect_household_data(data, generate_household_id)
 if 'calculate_clicked' not in st.session_state:
     st.session_state.calculate_clicked = False
 
-<br>
+# Add space above the button
+st.markdown('<div class="button-space"></div>', unsafe_allow_html=True)
 
-if st.button('Kira Jumlah Perbelanjaan Isi Rumah'):
+if st.button('Kira Jumlah Perbelanjaan Isi Rumah', key='calculate', help='Tekan untuk mengira jumlah perbelanjaan'):
+#if st.button('Kira Jumlah Perbelanjaan Isi Rumah'):
     st.session_state.calculate_clicked = True
     if selected_options_list:
         
