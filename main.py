@@ -19,7 +19,7 @@ st.markdown(
     """
     <style>
     html {
-        font-size: 18px;
+        font-size: 14px;
     }
     .reportview-container .main .block-container {
         max-width: 90%;
