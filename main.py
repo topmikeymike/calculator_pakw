@@ -81,11 +81,11 @@ if st.session_state.calculate_clicked:
     if selected_options_list:
         st.write("<p style='font-size:20px; font-weight:bold;'>Jumlah Perbelanjaan Isi Rumah</p>", unsafe_allow_html=True)
         total_household_expenditure = sum(option['TOTAL PAKW'] for option in selected_options_list)
-        st.write(f"<p style='font-size:16px; font-weight:bold;'>TOTAL PAKW untuk semua isi rumah: {total_household_expenditure}</p>", unsafe_allow_html=True)
+        st.write(f"<p style='font-size:16px; font-weight:bold;'>TOTAL PAKW untuk semua isi rumah: RM {total_household_expenditure}</p>", unsafe_allow_html=True)
 
         # Display TOTAL PAKW HH for all households if applicable
         if selected_options_list[0]['TOTAL_HH'] > 1:
-            st.write(f"<p style='font-size:16px; font-weight:bold;'>TOTAL PAKW HH untuk semua isi rumah: {selected_options_list[0]['TOTAL PAKW HH']}</p>", unsafe_allow_html=True)
+            st.write(f"<p style='font-size:16px; font-weight:bold;'>TOTAL PAKW HH untuk semua isi rumah: RM {selected_options_list[0]['TOTAL PAKW HH']}</p>", unsafe_allow_html=True)
 
         # Save selected options to CSV
         selected_options_df = pd.DataFrame(selected_options_list)
