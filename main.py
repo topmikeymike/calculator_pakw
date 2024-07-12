@@ -72,6 +72,7 @@ if 'calculate_clicked' not in st.session_state:
 if st.button('Kira Jumlah Perbelanjaan Isi Rumah'):
     st.session_state.calculate_clicked = True
     if selected_options_list:
+        
         st.write('Jumlah Perbelanjaan Isi Rumah:')
         total_household_expenditure = sum(option['TOTAL PAKW'] for option in selected_options_list)
         st.write(f'TOTAL PAKW untuk semua isi rumah: {total_household_expenditure}')
