@@ -3,7 +3,7 @@ import pandas as pd
 import uuid
 
 st.set_page_config(
-    page_title="Aplikasi Kalkulator PAKW",
+    page_title="Aplikasi Kalkulator PAKW 🧮 ",
     page_icon="🧊",
     #layout="wide",
     initial_sidebar_state="expanded",
