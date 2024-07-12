@@ -25,6 +25,7 @@ def collect_household_data(data, generate_household_id):
         selected_daerah = st.selectbox('DAERAH', ["Pilih"], key=f'DAERAH_{1}')
 
     # Filter Strata options based on selected Daerah
+    st.markdown("<h2 style='font-size:20px;' >Langkah 4 : Masukkan strata</h2>", unsafe_allow_html=True)
     if selected_daerah != "Pilih":
         strata_options = list(data[data['DAERAH'] == selected_daerah]['STRATA'].unique())
         selected_strata = st.radio('STRATA', strata_options, key=f'STRATA_{1}')
@@ -36,6 +37,7 @@ def collect_household_data(data, generate_household_id):
 
         with st.expander(f'Isi Rumah {household_id + 1}'):
             # Create dropdown lists for categorical columns for individual member
+            st.markdown("<h2 style='font-size:20px;' >Langkah 5 : Masukkan maklumat ahli isi rumah</h2>", unsafe_allow_html=True)
             umur_ksh = st.selectbox('UMUR_KSH', ["Pilih"] + list(data['UMUR_KSH'].unique()), key=f'UMUR_KSH_{household_id}')
             jantina = st.radio('JANTINA', list(data['JANTINA'].unique()), key=f'JANTINA_{household_id}')
 
