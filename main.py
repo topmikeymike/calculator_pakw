@@ -52,7 +52,9 @@ def generate_household_id():
 
 # Header
 st.title("Kalkulator Perbelanjaan Isi Rumah")
-st.markdown("Perbelanjaan Asas Kehidupan Wajar | (PAKW)")
+
+st.markdown("<h1 style='font-size:24px; font-weight:bold;'>Perbelanjaan Asas Kehidupan Wajar | (PAKW)</h1>", unsafe_allow_html=True)
+
 st.markdown("Kalkulator ini mengira jumlah perbelanjaan PAKW berdasarkan input pengguna.")
 
 # Load the data
