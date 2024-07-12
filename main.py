@@ -32,6 +32,14 @@ st.markdown(
     .footer-text:hover {
         color: grey;
     }
+    .big-button {
+        font-size: 24px !important;
+        padding: 20px 40px !important;
+        color: #fff !important;
+        background-color: #ff8c02 !important;
+        border: none !important;
+        border-radius: 8px !important;
+    }
     </style>
     """,
     unsafe_allow_html=True,
@@ -70,7 +78,8 @@ if 'calculate_clicked' not in st.session_state:
     st.session_state.calculate_clicked = False
 
 
-if st.button("<h1 style='font-size:24px; font-weight:bold;'>Kira Jumlah Perbelanjaan Isi Rumah</h1>"):
+#if st.button('Kira Jumlah Perbelanjaan Isi Rumah'):
+if st.markdown('<div><button class="big-button">Kira Jumlah Perbelanjaan Isi Rumah</button></div>', unsafe_allow_html=True):
     st.session_state.calculate_clicked = True
     if selected_options_list:
         
