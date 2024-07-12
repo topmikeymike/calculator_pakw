@@ -7,38 +7,38 @@ def load_data(file):
     return pd.read_csv(file)
 
 def collect_household_data(data, generate_household_id):
-    num_households = st.number_input('Enter number of households', min_value=1, value=1, step=1)
+    num_households = st.number_input('Masukkan jumlah isi rumah', min_value=1, value=1, step=1)
     selected_options_list = []
     total_pakw_hh = 0
 
     # Select Negeri
-    selected_negeri = st.selectbox('NEGERI', ["Select"] + list(data['NEGERI'].unique()), key=f'NEGERI_{1}')
+    selected_negeri = st.selectbox('NEGERI', ["Pilih"] + list(data['NEGERI'].unique()), key=f'NEGERI_{1}')
 
     # Filter Daerah options based on selected Negeri
-    if selected_negeri != "Select":
+    if selected_negeri != "Pilih":
         daerah_options = list(data[data['NEGERI'] == selected_negeri]['DAERAH'].unique())
-        selected_daerah = st.selectbox('DAERAH', ["Select"] + daerah_options, key=f'DAERAH_{1}')
+        selected_daerah = st.selectbox('DAERAH', ["Pilih"] + daerah_options, key=f'DAERAH_{1}')
     else:
-        selected_daerah = st.selectbox('DAERAH', ["Select"], key=f'DAERAH_{1}')
+        selected_daerah = st.selectbox('DAERAH', ["Pilih"], key=f'DAERAH_{1}')
 
     # Filter Strata options based on selected Daerah
-    if selected_daerah != "Select":
+    if selected_daerah != "Pilih":
         strata_options = list(data[data['DAERAH'] == selected_daerah]['STRATA'].unique())
         selected_strata = st.radio('STRATA', strata_options, key=f'STRATA_{1}')
     else:
-        selected_strata = st.radio('STRATA', ["Select"], key=f'STRATA_{1}')
+        selected_strata = st.radio('STRATA', ["Pilih"], key=f'STRATA_{1}')
 
     for household_id in range(num_households):
         household_uuid = generate_household_id()  # Generate unique household ID for the session
 
-        with st.expander(f'Household {household_id + 1}'):
+        with st.expander(f'Isi Rumah {household_id + 1}'):
             # Create dropdown lists for categorical columns for individual member
-            umur_ksh = st.selectbox('UMUR_KSH', ["Select"] + list(data['UMUR_KSH'].unique()), key=f'UMUR_KSH_{household_id}')
+            umur_ksh = st.selectbox('UMUR_KSH', ["Pilih"] + list(data['UMUR_KSH'].unique()), key=f'UMUR_KSH_{household_id}')
             jantina = st.radio('JANTINA', list(data['JANTINA'].unique()), key=f'JANTINA_{household_id}')
 
             # Calculate total expenditure for the household
-            if (umur_ksh != "Select" and jantina != "Select" and selected_negeri != "Select" and 
-                selected_daerah != "Select" and selected_strata != "Select"):
+            if (umur_ksh != "Pilih" and jantina != "Pilih" and selected_negeri != "Pilih" and 
+                selected_daerah != "Pilih" and selected_strata != "Pilih"):
                 
                 filtered_data = data[
                     (data['UMUR_KSH'] == umur_ksh) & 
