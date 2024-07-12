@@ -3,7 +3,7 @@ import pandas as pd
 import uuid
 
 st.set_page_config(
-    page_title="Aplikasi Kalkulator PAKW 🧮 ",
+    page_title="Aplikasi Kalkulator PAKW ",
     page_icon="🧊",
     #layout="wide",
     initial_sidebar_state="expanded",
@@ -51,11 +51,13 @@ def generate_household_id():
     return st.session_state.household_id
 
 # Header
-st.title("Kalkulator Perbelanjaan Isi Rumah")
+st.title("Kalkulator Perbelanjaan Isi Rumah 🧮")
 
 st.markdown("<h1 style='font-size:24px; font-weight:bold;'>Perbelanjaan Asas Kehidupan Wajar | (PAKW)</h1>", unsafe_allow_html=True)
 
-st.markdown("Kalkulator ini mengira jumlah perbelanjaan PAKW berdasarkan input pengguna.")
+st.markdown("<h1 style='font-size:22px; '>Kalkulator ini mengira jumlah perbelanjaan PAKW berdasarkan input pengguna.</h1>", unsafe_allow_html=True)
+
+
 
 # Load the data
 data = load_data('pakw_calculator_referal.csv')
