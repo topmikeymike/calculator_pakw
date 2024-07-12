@@ -19,11 +19,11 @@ st.markdown(
     """
     <style>
     html {
-        font-size: 15px;
+        font-size: 14px;
     }
     .reportview-container .main .block-container {
         max-width: 90%;
-        padding: 2rem;
+        padding: 3rem;
     }
     .footer-text {
         font-size: 12px;
@@ -31,21 +31,6 @@ st.markdown(
     }
     .footer-text:hover {
         color: grey;
-    }
-    .cool-btn {
-        display: inline-block;
-        padding: 10px 20px;
-        font-size: 18px;
-        font-weight: bold;
-        text-align: center;
-        text-decoration: none;
-        color: #fff;
-        background-color: #ff8c02;
-        border-radius: 8px;
-        transition: background-color 0.3s ease;
-    }
-    .cool-btn:hover {
-        background-color: #ff701b;
     }
     </style>
     """,
