@@ -79,20 +79,17 @@ st.markdown(
     .container {
         display: flex;
         justify-content: space-between;
+        gap: 40px; /* Adjust this value to increase spacing between containers */
     }
     .left-container, .right-container {
         flex: 1;
         padding: 20px;
     }
     .left-container {
-        max-width: 70%;
+        max-width: 45%;
     }
     .right-container {
-        max-width: 70%;
-        margin-left: 40px; /* Adjust this value to increase spacing */
-    }
-    .spacing {
-        margin-left: 40px; /* Adjust this value to control the space between containers */
+        max-width: 45%;
     }
     </style>
     """,
