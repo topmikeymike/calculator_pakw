@@ -78,10 +78,13 @@ st.markdown(
     .container {
         display: flex;
         justify-content: space-between;
+        gap: 20px; /* Adjust the gap between containers */
     }
     .left-container, .right-container {
         flex: 1;
         padding: 20px;
+        border: 2px solid #ddd; /* Border around containers */
+        border-radius: 8px; /* Rounded corners */
     }
     .left-container {
         max-width: 45%;
@@ -125,7 +128,7 @@ col1, col2 = st.columns([1, 1])  # Two equal-width columns
 
 with col1:
     st.markdown("""
-    <section>
+    <section class="left-container">
         <h2 style='font-size:22px;'>KALKULATOR KOS SARA HIDUP</h2>
         <ol>
             <li>Kalkulator KSH merupakan inisiatif Kerajaan untuk memaparkan kos perbelanjaan asas kehidupan wajar yang diperlukan oleh isi rumah mengikut negeri, daerah dan strata.</li>
