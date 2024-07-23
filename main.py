@@ -78,7 +78,7 @@ st.markdown(
     .container {
         display: flex;
         justify-content: space-between;
-        gap: 20px; /* Adjust the gap between containers */
+        gap: 40px; /* Adjust the gap between containers */
     }
     .left-container, .right-container {
         flex: 1;
@@ -99,7 +99,7 @@ st.markdown(
     .st-emotion-cache-13ln4jf {
         width: 100% !important;  /* Ensure it takes full width */
         padding: 6rem 1rem 10rem !important;  /* Custom padding */
-        max-width: 80rem !important;  /* Adjust the max-width */
+        max-width: 100rem !important;  /* Adjust the max-width */
     }
     </style>
     """,
