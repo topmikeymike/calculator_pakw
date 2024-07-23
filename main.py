@@ -3,6 +3,7 @@ import pandas as pd
 import uuid
 from household_calculator import collect_household_data, load_data
 
+# Set up Streamlit page configuration
 st.set_page_config(
     page_title="Aplikasi Kalkulator PAKW",
     page_icon="🧊",
@@ -59,7 +60,7 @@ st.markdown(
         padding: 5px;
         position: absolute;
         z-index: 1;
-        bottom: 125%; 
+        bottom: 125%;
         left: 50%;
         margin-left: -100px;
         opacity: 0;
@@ -88,9 +89,10 @@ st.markdown(
     }
     .right-container {
         max-width: 45%;
+        margin-left: 40px; /* Adjust this value to increase spacing */
     }
     .spacing {
-        margin-left: 20px;
+        margin-left: 40px; /* Adjust this value to control the space between containers */
     }
     </style>
     """,
@@ -114,13 +116,14 @@ st.title("Kalkulator Perbelanjaan Isi Rumah 🧮")
 st.markdown("<h1 style='font-size:24px; font-weight:bold;'>Perbelanjaan Asas Kehidupan Wajar | (PAKW)</h1>", unsafe_allow_html=True)
 st.markdown("<h2 style='font-size:22px;'>Kalkulator ini mengira jumlah perbelanjaan PAKW berdasarkan input pengguna.</h2>", unsafe_allow_html=True)
 
-# Container for the description and the calculator
-col1, col2 = st.columns([1, 1])  # Two equal-width columns
+# Layout containers
+st.markdown('<div class="container">', unsafe_allow_html=True)
 
-with col1:
-    st.markdown("""
-    <section>
-        <h2 style='font-size:22px;'>KALKULATOR KOS SARA HIDUP</h2>
+# Left Container (Description)
+st.markdown(
+    """
+    <div class="left-container">
+        <h2>KALKULATOR KOS SARA HIDUP</h2>
         <ol>
             <li>Kalkulator KSH merupakan inisiatif Kerajaan untuk memaparkan kos perbelanjaan asas kehidupan wajar yang diperlukan oleh isi rumah mengikut negeri, daerah dan strata.</li>
             <li>Data yang dipaparkan adalah kajian yang dilakukan berdasarkan data Laporan Perbelanjaan Isi Rumah 2022.</li>
@@ -128,83 +131,91 @@ with col1:
             <li>Nilai KSH ini merangkumi 14 buah negeri dan 162 daerah pentadbiran beserta strata bandar dan luar bandar.</li>
             <li>Laporan penuh boleh di muat turun di: <a href="https://www.dosm.gov.my/portal-main/online-services?data=6">https://www.dosm.gov.my/portal-main/online-services?data=6</a></li>
         </ol>
-    </section>
-    """, unsafe_allow_html=True)
+    </div>
+    """,
+    unsafe_allow_html=True
+)
 
-with col2:
-    # Load the data
-    data = load_data('pakw_calculator_referal.csv')
+# Right Container (Calculator)
+st.markdown('<div class="right-container">', unsafe_allow_html=True)
 
-    # Collect household data
-    selected_options_list = collect_household_data(data, generate_household_id)
+# Load the data
+data = load_data('pakw_calculator_referal.csv')
 
-    # Display total household expenditure
-    if 'calculate_clicked' not in st.session_state:
-        st.session_state.calculate_clicked = False
+# Collect household data
+selected_options_list = collect_household_data(data, generate_household_id)
 
-    # Add space above the button
-    st.markdown('<div class="button-space"></div>', unsafe_allow_html=True)
+# Display total household expenditure
+if 'calculate_clicked' not in st.session_state:
+    st.session_state.calculate_clicked = False
 
-    if st.button('Kira Jumlah Perbelanjaan Isi Rumah', key='calculate', help='Tekan untuk mengira jumlah perbelanjaan'):
-        st.session_state.calculate_clicked = True
+# Add space above the button
+st.markdown('<div class="button-space"></div>', unsafe_allow_html=True)
 
-    if st.session_state.calculate_clicked:
-        if selected_options_list:
-            st.write("<p style='font-size:20px; font-weight:bold;'>Jumlah Perbelanjaan Isi Rumah</p>", unsafe_allow_html=True)
-            total_household_expenditure = sum(option['TOTAL PAKW'] for option in selected_options_list)
+if st.button('Kira Jumlah Perbelanjaan Isi Rumah', key='calculate', help='Tekan untuk mengira jumlah perbelanjaan'):
+    st.session_state.calculate_clicked = True
+
+if st.session_state.calculate_clicked:
+    if selected_options_list:
+        st.write("<p style='font-size:20px; font-weight:bold;'>Jumlah Perbelanjaan Isi Rumah</p>", unsafe_allow_html=True)
+        total_household_expenditure = sum(option['TOTAL PAKW'] for option in selected_options_list)
+        st.write(
+            f"""
+            <p style='font-size:16px; font-weight:bold;'>
+                TOTAL PAKW untuk semua isi rumah: RM {total_household_expenditure:.2f}
+                <span class='info-icon'>𝒾
+                    <span class='tooltip'>This is the total expenditure for all households calculated based on the input data.</span>
+                </span>
+            </p>
+            """,
+            unsafe_allow_html=True
+        )
+
+        # Display TOTAL PAKW HH for all households if applicable
+        if selected_options_list[0]['TOTAL_HH'] > 1:
             st.write(
                 f"""
                 <p style='font-size:16px; font-weight:bold;'>
-                    TOTAL PAKW untuk semua isi rumah: RM {total_household_expenditure:.2f}
+                    TOTAL PAKW HH untuk semua isi rumah: RM {selected_options_list[0]["TOTAL PAKW HH"]:.2f}
                     <span class='info-icon'>𝒾
-                        <span class='tooltip'>This is the total expenditure for all households calculated based on the input data.</span>
+                        <span class='tooltip'>This is the total PAKW for all households.</span>
                     </span>
                 </p>
                 """,
                 unsafe_allow_html=True
             )
 
-            # Display TOTAL PAKW HH for all households if applicable
-            if selected_options_list[0]['TOTAL_HH'] > 1:
-                st.write(
-                    f"""
-                    <p style='font-size:16px; font-weight:bold;'>
-                        TOTAL PAKW HH untuk semua isi rumah: RM {selected_options_list[0]["TOTAL PAKW HH"]:.2f}
-                        <span class='info-icon'>𝒾
-                            <span class='tooltip'>This is the total PAKW for all households.</span>
-                        </span>
-                    </p>
-                    """,
-                    unsafe_allow_html=True
-                )
+        # Save selected options to CSV
+        selected_options_df = pd.DataFrame(selected_options_list)
 
-            # Save selected options to CSV
-            selected_options_df = pd.DataFrame(selected_options_list)
+        # Conditionally add TOTAL PAKW HH column if there are multiple households
+        if selected_options_list[0]['TOTAL_HH'] > 1:
+            selected_options_df['TOTAL PAKW HH'] = selected_options_list[0]['TOTAL PAKW HH']
 
-            # Conditionally add TOTAL PAKW HH column if there are multiple households
-            if selected_options_list[0]['TOTAL_HH'] > 1:
-                selected_options_df['TOTAL PAKW HH'] = selected_options_list[0]['TOTAL PAKW HH']
+        # Save to CSV
+        try:
+            history = pd.read_csv('user_input_history.csv')
+            history = pd.concat([history, selected_options_df], ignore_index=True)
+            history.to_csv('user_input_history.csv', index=False)
+        except FileNotFoundError:
+            selected_options_df.to_csv('user_input_history.csv', index=False)
 
-            # Save to CSV
-            try:
-                history = pd.read_csv('user_input_history.csv')
-                history = pd.concat([history, selected_options_df], ignore_index=True)
-                history.to_csv('user_input_history.csv', index=False)
-            except FileNotFoundError:
-                selected_options_df.to_csv('user_input_history.csv', index=False)
+        # Display selected options in a minimalist table
+        st.write("<p style='font-size:20px; font-weight:bold;'>Pilihan yang Dipilih:</p>", unsafe_allow_html=True)
+        # Only select relevant columns for display
+        display_columns = ['HOUSEHOLD_ID', 'UMUR_KSH', 'JANTINA', 'NEGERI', 'DAERAH', 'STRATA', 'TOTAL PAKW']
+        if selected_options_list[0]['TOTAL_HH'] > 1:
+            display_columns.append('TOTAL PAKW HH')
+        display_columns.append('TOTAL_HH')
+        st.dataframe(selected_options_df[display_columns], width=1000)  # Set width to accommodate all columns
 
-            # Display selected options in a minimalist table
-            st.write("<p style='font-size:20px; font-weight:bold;'>Pilihan yang Dipilih:</p>", unsafe_allow_html=True)
-            # Only select relevant columns for display
-            display_columns = ['HOUSEHOLD_ID', 'UMUR_KSH', 'JANTINA', 'NEGERI', 'DAERAH', 'STRATA', 'TOTAL PAKW']
-            if selected_options_list[0]['TOTAL_HH'] > 1:
-                display_columns.append('TOTAL PAKW HH')
-            display_columns.append('TOTAL_HH')
-            st.dataframe(selected_options_df[display_columns], width=1000)  # Set width to accommodate all columns
+    if st.button('Kira Semula'):
+        reset_session_state()
+        st.experimental_rerun()
 
-        if st.button('Kira Semula'):
-            reset_session_state()
-            st.experimental_rerun()
+# Close the containers
+st.markdown('</div>', unsafe_allow_html=True)  # Close right-container
+st.markdown('</div>', unsafe_allow_html=True)  # Close container
 
 # Footer
 language_dict = {
