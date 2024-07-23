@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import uuid
+from household_calculator import collect_household_data, load_data
 
 st.set_page_config(
     page_title="Aplikasi Kalkulator PAKW",
@@ -79,8 +80,6 @@ st.markdown(
     unsafe_allow_html=True,
 )
 
-from household_calculator import collect_household_data, load_data
-
 # Function to reset session state
 def reset_session_state():
     for key in st.session_state.keys():
@@ -96,81 +95,89 @@ def generate_household_id():
 st.title("Kalkulator Perbelanjaan Isi Rumah 🧮")
 
 st.markdown("<h1 style='font-size:24px; font-weight:bold;'>Perbelanjaan Asas Kehidupan Wajar | (PAKW)</h1>", unsafe_allow_html=True)
-st.markdown("<h2 style='font-size:22px;'>Kalkulator ini mengira jumlah perbelanjaan PAKW berdasarkan input pengguna.</h2>", unsafe_allow_html=True)
 
-# Load the data
-data = load_data('pakw_calculator_referal.csv')
+# Create two columns
+col1, col2 = st.columns([2, 3])  # Adjust the width ratio as needed
 
-# Collect household data
-selected_options_list = collect_household_data(data, generate_household_id)
+# Left column with description
+with col1:
+    st.markdown("<h2 style='font-size:22px;'>Kalkulator ini mengira jumlah perbelanjaan PAKW berdasarkan input pengguna.</h2>", unsafe_allow_html=True)
 
-# Display total household expenditure
-if 'calculate_clicked' not in st.session_state:
-    st.session_state.calculate_clicked = False
+# Right column with calculator
+with col2:
+    # Load the data
+    data = load_data('pakw_calculator_referal.csv')
 
-# Add space above the button
-st.markdown('<div class="button-space"></div>', unsafe_allow_html=True)
+    # Collect household data
+    selected_options_list = collect_household_data(data, generate_household_id)
 
-if st.button('Kira Jumlah Perbelanjaan Isi Rumah', key='calculate', help='Tekan untuk mengira jumlah perbelanjaan'):
-    st.session_state.calculate_clicked = True
+    # Display total household expenditure
+    if 'calculate_clicked' not in st.session_state:
+        st.session_state.calculate_clicked = False
 
-if st.session_state.calculate_clicked:
-    if selected_options_list:
-        st.write("<p style='font-size:20px; font-weight:bold;'>Jumlah Perbelanjaan Isi Rumah</p>", unsafe_allow_html=True)
-        total_household_expenditure = sum(option['TOTAL PAKW'] for option in selected_options_list)
-        st.write(
-            f"""
-            <p style='font-size:16px; font-weight:bold;'>
-                TOTAL PAKW untuk semua isi rumah: RM {total_household_expenditure:.2f}
-                <span class='info-icon'>𝒾
-                    <span class='tooltip'>This is the total expenditure for all households calculated based on the input data.</span>
-                </span>
-            </p>
-            """,
-            unsafe_allow_html=True
-        )
+    # Add space above the button
+    st.markdown('<div class="button-space"></div>', unsafe_allow_html=True)
 
-        # Display TOTAL PAKW HH for all households if applicable
-        if selected_options_list[0]['TOTAL_HH'] > 1:
+    if st.button('Kira Jumlah Perbelanjaan Isi Rumah', key='calculate', help='Tekan untuk mengira jumlah perbelanjaan'):
+        st.session_state.calculate_clicked = True
+
+    if st.session_state.calculate_clicked:
+        if selected_options_list:
+            st.write("<p style='font-size:20px; font-weight:bold;'>Jumlah Perbelanjaan Isi Rumah</p>", unsafe_allow_html=True)
+            total_household_expenditure = sum(option['TOTAL PAKW'] for option in selected_options_list)
             st.write(
                 f"""
                 <p style='font-size:16px; font-weight:bold;'>
-                    TOTAL PAKW HH untuk semua isi rumah: RM {selected_options_list[0]["TOTAL PAKW HH"]:.2f}
+                    TOTAL PAKW untuk semua isi rumah: RM {total_household_expenditure:.2f}
                     <span class='info-icon'>𝒾
-                        <span class='tooltip'>This is the total PAKW for all households.</span>
+                        <span class='tooltip'>This is the total expenditure for all households calculated based on the input data.</span>
                     </span>
                 </p>
                 """,
                 unsafe_allow_html=True
             )
 
-        # Save selected options to CSV
-        selected_options_df = pd.DataFrame(selected_options_list)
+            # Display TOTAL PAKW HH for all households if applicable
+            if selected_options_list[0]['TOTAL_HH'] > 1:
+                st.write(
+                    f"""
+                    <p style='font-size:16px; font-weight:bold;'>
+                        TOTAL PAKW HH untuk semua isi rumah: RM {selected_options_list[0]["TOTAL PAKW HH"]:.2f}
+                        <span class='info-icon'>𝒾
+                            <span class='tooltip'>This is the total PAKW for all households.</span>
+                        </span>
+                    </p>
+                    """,
+                    unsafe_allow_html=True
+                )
 
-        # Conditionally add TOTAL PAKW HH column if there are multiple households
-        if selected_options_list[0]['TOTAL_HH'] > 1:
-            selected_options_df['TOTAL PAKW HH'] = selected_options_list[0]['TOTAL PAKW HH']
+            # Save selected options to CSV
+            selected_options_df = pd.DataFrame(selected_options_list)
 
-        # Save to CSV
-        try:
-            history = pd.read_csv('user_input_history.csv')
-            history = pd.concat([history, selected_options_df], ignore_index=True)
-            history.to_csv('user_input_history.csv', index=False)
-        except FileNotFoundError:
-            selected_options_df.to_csv('user_input_history.csv', index=False)
+            # Conditionally add TOTAL PAKW HH column if there are multiple households
+            if selected_options_list[0]['TOTAL_HH'] > 1:
+                selected_options_df['TOTAL PAKW HH'] = selected_options_list[0]['TOTAL PAKW HH']
 
-        # Display selected options in a minimalist table
-        st.write("<p style='font-size:20px; font-weight:bold;'>Pilihan yang Dipilih:</p>", unsafe_allow_html=True)
-        # Only select relevant columns for display
-        display_columns = ['HOUSEHOLD_ID', 'UMUR_KSH', 'JANTINA', 'NEGERI', 'DAERAH', 'STRATA', 'TOTAL PAKW']
-        if selected_options_list[0]['TOTAL_HH'] > 1:
-            display_columns.append('TOTAL PAKW HH')
-        display_columns.append('TOTAL_HH')
-        st.dataframe(selected_options_df[display_columns], width=1000)  # Set width to accommodate all columns
+            # Save to CSV
+            try:
+                history = pd.read_csv('user_input_history.csv')
+                history = pd.concat([history, selected_options_df], ignore_index=True)
+                history.to_csv('user_input_history.csv', index=False)
+            except FileNotFoundError:
+                selected_options_df.to_csv('user_input_history.csv', index=False)
 
-    if st.button('Kira Semula'):
-        reset_session_state()
-        st.experimental_rerun()
+            # Display selected options in a minimalist table
+            st.write("<p style='font-size:20px; font-weight:bold;'>Pilihan yang Dipilih:</p>", unsafe_allow_html=True)
+            # Only select relevant columns for display
+            display_columns = ['HOUSEHOLD_ID', 'UMUR_KSH', 'JANTINA', 'NEGERI', 'DAERAH', 'STRATA', 'TOTAL PAKW']
+            if selected_options_list[0]['TOTAL_HH'] > 1:
+                display_columns.append('TOTAL PAKW HH')
+            display_columns.append('TOTAL_HH')
+            st.dataframe(selected_options_df[display_columns], width=1000)  # Set width to accommodate all columns
+
+        if st.button('Kira Semula'):
+            reset_session_state()
+            st.experimental_rerun()
 
 # Footer
 language_dict = {
