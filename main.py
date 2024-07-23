@@ -85,10 +85,10 @@ st.markdown(
         padding: 20px;
     }
     .left-container {
-        max-width: 45%;
+        max-width: 70%;
     }
     .right-container {
-        max-width: 45%;
+        max-width: 70%;
         margin-left: 40px; /* Adjust this value to increase spacing */
     }
     .spacing {
