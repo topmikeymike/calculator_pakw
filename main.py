@@ -134,7 +134,7 @@ with col1:
             <li>Kalkulator KSH merupakan inisiatif Kerajaan untuk memaparkan kos perbelanjaan asas kehidupan wajar yang diperlukan oleh isi rumah mengikut negeri, daerah dan strata.</li>
             <li>Data yang dipaparkan adalah kajian yang dilakukan berdasarkan data Laporan Perbelanjaan Isi Rumah 2022.</li>
             <li>Data yang dipaparkan adalah merupakan nilai kos sara hidup semasa dan akan dikemaskini setiap tahun.</li>
-            <li>Nilai KSH ini merangkumi 14 buah negeri dan 162 daerah pentadbiran beserta strata bandar dan luar bandar.</li>
+            <li>Nilai KSH ini merangkumi 14 buah negeri dan 162 daerah pentadbiran beserta strata bandar dan luar bandar. SEMUA</li>
             <li>Laporan penuh boleh di muat turun di: <a href="https://www.dosm.gov.my/portal-main/online-services?data=6">https://www.dosm.gov.my/portal-main/online-services?data=6</a></li>
         </ol>
     </section>
