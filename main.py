@@ -75,6 +75,23 @@ st.markdown(
         border-style: solid;
         border-color: #555 transparent transparent transparent;
     }
+    .container {
+        display: flex;
+        justify-content: space-between;
+    }
+    .left-container, .right-container {
+        flex: 1;
+        padding: 20px;
+    }
+    .left-container {
+        max-width: 45%;
+    }
+    .right-container {
+        max-width: 45%;
+    }
+    .spacing {
+        margin-left: 20px;
+    }
     </style>
     """,
     unsafe_allow_html=True,
@@ -95,15 +112,25 @@ def generate_household_id():
 st.title("Kalkulator Perbelanjaan Isi Rumah 🧮")
 
 st.markdown("<h1 style='font-size:24px; font-weight:bold;'>Perbelanjaan Asas Kehidupan Wajar | (PAKW)</h1>", unsafe_allow_html=True)
+st.markdown("<h2 style='font-size:22px;'>Kalkulator ini mengira jumlah perbelanjaan PAKW berdasarkan input pengguna.</h2>", unsafe_allow_html=True)
 
-# Create two columns
-col1, col2 = st.columns([2, 3])  # Adjust the width ratio as needed
+# Container for the description and the calculator
+col1, col2 = st.columns([1, 1])  # Two equal-width columns
 
-# Left column with description
 with col1:
-    st.markdown("<h2 style='font-size:22px;'>Kalkulator ini mengira jumlah perbelanjaan PAKW berdasarkan input pengguna.</h2>", unsafe_allow_html=True)
+    st.markdown("""
+    <section>
+        <h2 style='font-size:22px;'>KALKULATOR KOS SARA HIDUP</h2>
+        <ol>
+            <li>Kalkulator KSH merupakan inisiatif Kerajaan untuk memaparkan kos perbelanjaan asas kehidupan wajar yang diperlukan oleh isi rumah mengikut negeri, daerah dan strata.</li>
+            <li>Data yang dipaparkan adalah kajian yang dilakukan berdasarkan data Laporan Perbelanjaan Isi Rumah 2022.</li>
+            <li>Data yang dipaparkan adalah merupakan nilai kos sara hidup semasa dan akan dikemaskini setiap tahun.</li>
+            <li>Nilai KSH ini merangkumi 14 buah negeri dan 162 daerah pentadbiran beserta strata bandar dan luar bandar.</li>
+            <li>Laporan penuh boleh di muat turun di: <a href="https://www.dosm.gov.my/portal-main/online-services?data=6">https://www.dosm.gov.my/portal-main/online-services?data=6</a></li>
+        </ol>
+    </section>
+    """, unsafe_allow_html=True)
 
-# Right column with calculator
 with col2:
     # Load the data
     data = load_data('pakw_calculator_referal.csv')
