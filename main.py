@@ -99,7 +99,7 @@ st.markdown(
     .st-emotion-cache-13ln4jf {
         width: 100% !important;  /* Ensure it takes full width */
         padding: 6rem 1rem 10rem !important;  /* Custom padding */
-        max-width: 100rem !important;  /* Adjust the max-width */
+        max-width: 80rem !important;  /* Adjust the max-width */
     }
     </style>
     """,
