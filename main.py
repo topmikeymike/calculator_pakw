@@ -87,7 +87,7 @@ st.markdown(
         border-radius: 8px; /* Rounded corners */
     }
     .left-container {
-        max-width: 45%;
+        max-width: 90%;
     }
     .right-container {
         max-width: 45%;
