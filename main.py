@@ -78,7 +78,7 @@ st.markdown(
     .container {
         display: flex;
         justify-content: space-between;
-        gap: 40px; /* Adjust the gap between containers */
+         /* Adjust the gap between containers */
     }
     .left-container, .right-container {
         flex: 1;
