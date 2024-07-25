@@ -312,14 +312,32 @@ with col2:
             except FileNotFoundError:
                 selected_options_df.to_csv('user_input_history.csv', index=False)
 
-
+            # Dictionary to map original column names to display names
+            column_display_names = {
+                'UMUR_KSH': 'Umur',
+                'JANTINA': 'Jantina',
+                'NEGERI': 'Negeri',
+                'DAERAH': 'Daerah',
+                'STRATA': 'Strata',
+                'TOTAL PAKW': 'Jumlah PAKW'
+            }
+            
             # Display selected options in a minimalist table
             st.write("<p style='font-size:20px; font-weight:bold;'>Pilihan yang Dipilih:</p>", unsafe_allow_html=True)
+            
             # Only select relevant columns for display
             display_columns = ['UMUR_KSH', 'JANTINA', 'NEGERI', 'DAERAH', 'STRATA', 'TOTAL PAKW']
-            if selected_options_list[0]['TOTAL_HH'] > 1:
-                display_columns.append('TOTAL PAKW HH')
-            display_columns.append('TOTAL_HH')
+            
+            # Rename columns for display
+            df_display = df[display_columns].rename(columns=column_display_names)
+            
+            # Display selected options in a minimalist table
+            #st.write("<p style='font-size:20px; font-weight:bold;'>Pilihan yang Dipilih:</p>", unsafe_allow_html=True)
+            # Only select relevant columns for display
+            #display_columns = ['UMUR_KSH', 'JANTINA', 'NEGERI', 'DAERAH', 'STRATA', 'TOTAL PAKW']
+           # if selected_options_list[0]['TOTAL_HH'] > 1:
+           #     display_columns.append('TOTAL PAKW HH')
+           # display_columns.append('TOTAL_HH')
             
             st.dataframe(selected_options_df[display_columns], width=1000)  # Set width to accommodate all columns
 
