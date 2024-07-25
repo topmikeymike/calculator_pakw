@@ -316,23 +316,27 @@ with col2:
             # Mapping of original column names to display names
             column_display_names = {
                 'UMUR_KSH': 'UMUR AHLI ISI RUMAH',
-                'JANTINA': 'JANTINA',
-                'NEGERI': 'NEGERI',
-                'DAERAH': 'DAERAH',
+                'JANTINA': 'GENDER',
+                'NEGERI': 'STATE',
+                'DAERAH': 'DISTRICT',
                 'STRATA': 'STRATA',
-                'TOTAL PAKW': 'PAKW INDIVIDU'
+                'TOTAL PAKW': 'TOTAL PAKW'
             }
             
             # List of columns to display
             display_columns = ['UMUR_KSH', 'JANTINA', 'NEGERI', 'DAERAH', 'STRATA', 'TOTAL PAKW']
             
+            # Filter the DataFrame to include only the display columns
+            display_df = selected_options_list[display_columns]
+            
+            # Rename the columns using the display names
+            display_df = display_df.rename(columns=column_display_names)
+            
             # Write the display title
             st.write("<p style='font-size:20px; font-weight:bold;'>Pilihan yang Dipilih:</p>", unsafe_allow_html=True)
             
-            # Display the columns with their display names
-            for column in display_columns:
-                st.write(f"<p>{column_display_names[column]}</p>", unsafe_allow_html=True)
-
+            # Display the DataFrame as a table in Streamlit
+            st.write(display_df)
 
             # Display selected options in a minimalist table
            # st.write("<p style='font-size:20px; font-weight:bold;'>Pilihan yang Dipilih:</p>", unsafe_allow_html=True)
@@ -342,7 +346,7 @@ with col2:
                 #display_columns.append('TOTAL PAKW HH')
             #display_columns.append('TOTAL_HH')
             
-            st.dataframe(selected_options_df[display_columns], width=1000)  # Set width to accommodate all columns
+            #st.dataframe(selected_options_df[display_columns], width=1000)  # Set width to accommodate all columns
 
         if st.button('Kira Semula'):
             reset_session_state()
