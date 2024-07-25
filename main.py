@@ -105,9 +105,11 @@ st.markdown(
     }
     .header {
         display: flex;
-        align-items: center;
-        justify-content: flex-start;
         align-items: flex-start;
+        flex-direction: column;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: center;
     }
     .header img {
         margin-right: 20px;
