@@ -38,7 +38,17 @@ def collect_household_data(data, generate_household_id):
     
         with st.expander(f'Isi Rumah {household_id + 1}'):
             # Create dropdown lists for categorical columns for individual member
-            umur_ksh = st.selectbox('UMUR AHLI ISI RUMAH', ["Pilih"] + list(data['UMUR_KSH'].unique()), key=f'UMUR_KSH_{household_id}')
+                # umur_ksh = st.selectbox('UMUR AHLI ISI RUMAH', ["Pilih"] + list(data['UMUR_KSH'].unique()), key=f'UMUR_KSH_{household_id}')
+            # Sort the unique values for UMUR_KSH and add "Pilih" at the beginning
+                sorted_age_ranges = sorted(data['UMUR_KSH'].unique())
+            
+            # Create the selectbox with sorted options
+                umur_ksh = st.selectbox(
+                    'UMUR AHLI ISI RUMAH', 
+                    ["Pilih"] + sorted_age_ranges, 
+                    key=f'UMUR_KSH_{household_id}'
+                )
+
             jantina = st.radio('JANTINA', list(data['JANTINA'].unique()), key=f'JANTINA_{household_id}')
 
             # Calculate total expenditure for the household
