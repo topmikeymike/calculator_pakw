@@ -180,6 +180,7 @@ st.markdown("""
                 <a href="#"><i class="fas fa-globe"></i></a> 
                 <a href="https://web.facebook.com/StatsMalaysia"><i class="fab fa-facebook-f"></i></a>
                 <a href="#"><i class="fa-brands fa-x-twitter"></i></a> 
+                <a href="#"><i class="fa-brands fa-x-twitter"></i></a> 
                 <a href="#"><i class="fab fa-instagram"></i></a> 
                 <a href="#"><i class="fab fa-youtube"></i></a> 
             </div>
