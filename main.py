@@ -315,7 +315,7 @@ with col2:
             # Display selected options in a minimalist table
             st.write("<p style='font-size:20px; font-weight:bold;'>Pilihan yang Dipilih:</p>", unsafe_allow_html=True)
             # Only select relevant columns for display
-            display_columns = ['UMUR_KSH', 'JANTINA', 'NEGERI', 'DAERAH', 'STRATA', 'TOTAL PAKW']
+            display_columns = ['UMUR_KSH', 'JANTINA', 'NEGERI', 'DAERAH', 'STRATA', 'PAKW INDIVIDU']
             #if selected_options_list[0]['TOTAL_HH'] > 1:
                 #display_columns.append('TOTAL PAKW HH')
             #display_columns.append('TOTAL_HH')
