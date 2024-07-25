@@ -14,7 +14,7 @@ st.set_page_config(
 st.markdown(
     """
     <style>
-    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
     html {
         font-size: 14px;
     }
