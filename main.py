@@ -330,6 +330,9 @@ with col2:
             
             # Rename columns for display
             df_display = df[display_columns].rename(columns=column_display_names)
+
+            # Display the DataFrame with the renamed columns
+            st.table(df_display)
             
             # Display selected options in a minimalist table
             #st.write("<p style='font-size:20px; font-weight:bold;'>Pilihan yang Dipilih:</p>", unsafe_allow_html=True)
