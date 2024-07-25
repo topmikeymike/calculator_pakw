@@ -11,8 +11,7 @@ st.set_page_config(
 )
 
 # Custom CSS for styling
-st.markdown(
-    """
+css_code = """
     <style>
     @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css');
     html {
@@ -151,10 +150,38 @@ st.markdown(
     .logos img {
         margin-right: 20px;
     }
+
+    /* Media Queries for Responsive Design */
+    @media (max-width: 768px) {
+        .header {
+            flex-direction: column;
+            align-items: center;
+        }
+        .logos img {
+            margin-right: 0;
+            margin-bottom: 10px;
+        }
+        .contact-info {
+            width: 100%;
+            margin-top: 20px;
+            justify-content: center;
+        }
+        .icons-container {
+            justify-content: center;
+        }
+    }
+    @media (max-width: 480px) {
+        .contact-text {
+            font-size: 14px;
+        }
+        .icons-container {
+            gap: 5px;
+        }
+    }
     </style>
-    """,
-    unsafe_allow_html=True,
-)
+"""
+
+st.markdown(css_code, unsafe_allow_html=True)
 
 # Function to get image base64
 def get_image_base64(image_path):
