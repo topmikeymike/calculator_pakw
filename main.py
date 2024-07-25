@@ -312,8 +312,8 @@ with col2:
             except FileNotFoundError:
                 selected_options_df.to_csv('user_input_history.csv', index=False)
 
-            # Dictionary to map original column names to display names
-            column_display_names = {
+            # Define the mapping of original column names to display names
+            column_name_mapping = {
                 'UMUR_KSH': 'Umur',
                 'JANTINA': 'Jantina',
                 'NEGERI': 'Negeri',
@@ -328,21 +328,21 @@ with col2:
             # Only select relevant columns for display
             display_columns = ['UMUR_KSH', 'JANTINA', 'NEGERI', 'DAERAH', 'STRATA', 'TOTAL PAKW']
             
-            # Rename columns for display
-            df_display = df[display_columns].rename(columns=column_display_names)
-
-            # Display the DataFrame with the renamed columns
-            st.table(df_display)
+            # Rename columns for display purposes
+            display_df = selected_options_df[display_columns].rename(columns=column_name_mapping)
             
+            # Display the DataFrame with new column names
+            st.dataframe(display_df, width=1000)  # Set width to accommodate all columns
+
             # Display selected options in a minimalist table
-            #st.write("<p style='font-size:20px; font-weight:bold;'>Pilihan yang Dipilih:</p>", unsafe_allow_html=True)
+            # st.write("<p style='font-size:20px; font-weight:bold;'>Pilihan yang Dipilih:</p>", unsafe_allow_html=True)
             # Only select relevant columns for display
-            #display_columns = ['UMUR_KSH', 'JANTINA', 'NEGERI', 'DAERAH', 'STRATA', 'TOTAL PAKW']
+            # display_columns = ['UMUR_KSH', 'JANTINA', 'NEGERI', 'DAERAH', 'STRATA', 'TOTAL PAKW']
            # if selected_options_list[0]['TOTAL_HH'] > 1:
            #     display_columns.append('TOTAL PAKW HH')
            # display_columns.append('TOTAL_HH')
             
-            st.dataframe(selected_options_df[display_columns], width=1000)  # Set width to accommodate all columns
+            # st.dataframe(selected_options_df[display_columns], width=1000)  # Set width to accommodate all columns
 
         if st.button('Kira Semula'):
             reset_session_state()
