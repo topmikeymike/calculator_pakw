@@ -315,10 +315,11 @@ with col2:
             # Display selected options in a minimalist table
             st.write("<p style='font-size:20px; font-weight:bold;'>Pilihan yang Dipilih:</p>", unsafe_allow_html=True)
             # Only select relevant columns for display
-            display_columns = ['HOUSEHOLD_ID', 'UMUR_KSH', 'JANTINA', 'NEGERI', 'DAERAH', 'STRATA', 'TOTAL PAKW']
-            if selected_options_list[0]['TOTAL_HH'] > 1:
-                display_columns.append('TOTAL PAKW HH')
-            display_columns.append('TOTAL_HH')
+            display_columns = ['UMUR_KSH', 'JANTINA', 'NEGERI', 'DAERAH', 'STRATA', 'TOTAL PAKW']
+            #if selected_options_list[0]['TOTAL_HH'] > 1:
+                #display_columns.append('TOTAL PAKW HH')
+            #display_columns.append('TOTAL_HH')
+            
             st.dataframe(selected_options_df[display_columns], width=1000)  # Set width to accommodate all columns
 
         if st.button('Kira Semula'):
