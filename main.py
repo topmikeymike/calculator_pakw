@@ -137,12 +137,6 @@ st.markdown(
     .icons-container a:hover {
         color: #007bff;
     }
-    .header {
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        align-items: center;
-    }
     .logos {
         display: flex;
         justify-content: flex-start;
