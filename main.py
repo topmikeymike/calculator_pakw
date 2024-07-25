@@ -319,7 +319,7 @@ with col2:
                 'NEGERI': 'Negeri',
                 'DAERAH': 'Daerah',
                 'STRATA': 'Strata',
-                'TOTAL PAKW': 'PAKW Individu'
+                'TOTAL PAKW': 'Jumlah PAKW'
             }
             
             # Display selected options in a minimalist table
@@ -330,12 +330,14 @@ with col2:
             
             # Rename columns for display purposes
             display_df = selected_options_df[display_columns].rename(columns=column_name_mapping)
-
+            
             # Remove index by resetting and dropping it
             display_df_no_index = display_df.reset_index(drop=True)
+            
+            # Display the DataFrame without index
+            st.write(display_df_no_index, width=1000)
 
-            # Display the DataFrame with new column names
-            st.dataframe(display_df_no_index, width=1000)  # Set width to accommodate all columns
+
 
             # Display selected options in a minimalist table
             # st.write("<p style='font-size:20px; font-weight:bold;'>Pilihan yang Dipilih:</p>", unsafe_allow_html=True)
