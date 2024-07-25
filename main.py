@@ -284,18 +284,18 @@ with col2:
             )
 
             # Display TOTAL PAKW HH for all households if applicable
-            if selected_options_list[0]['TOTAL_HH'] > 1:
-                st.write(
-                    f"""
-                    <p style='font-size:16px; font-weight:bold;'>
-                        TOTAL PAKW HH untuk semua isi rumah: RM {selected_options_list[0]["TOTAL PAKW HH"]:.2f}
-                        <span class='info-icon'>𝒾
-                            <span class='tooltip'>This is the total PAKW for all households.</span>
-                        </span>
-                    </p>
-                    """,
-                    unsafe_allow_html=True
-                )
+            #if selected_options_list[0]['TOTAL_HH'] > 1:
+            #    st.write(
+            #        f"""
+            #        <p style='font-size:16px; font-weight:bold;'>
+            #            TOTAL PAKW HH untuk semua isi rumah: RM {selected_options_list[0]["TOTAL PAKW HH"]:.2f}
+            #            <span class='info-icon'>𝒾
+            #                <span class='tooltip'>This is the total PAKW for all households.</span>
+            #            </span>
+            #        </p>
+            #        """,
+            #        unsafe_allow_html=True
+            #    )
 
             # Save selected options to CSV
             selected_options_df = pd.DataFrame(selected_options_list)
