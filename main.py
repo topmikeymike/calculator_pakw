@@ -106,10 +106,10 @@ st.markdown(
     .header {
         display: flex;
         align-items: flex-start;
-        flex-direction: column;
-        flex-wrap: wrap;
-        align-content: center;
-        justify-content: center;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: flex-start;
+        justify-content: flex-start;
     }
     .header img {
         margin-right: 20px;
