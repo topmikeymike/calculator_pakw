@@ -180,6 +180,7 @@ st.markdown("""
                 <a href="https://www.dosm.gov.my/"><i class="fas fa-globe"></i></a> 
                 <a href="https://web.facebook.com/StatsMalaysia"><i class="fab fa-facebook-f"></i></a>
                 <a href="https://x.com/StatsMalaysia"><i class="fab fa-twitter"></i></a>
+                <a href="https://x.com/StatsMalaysia"><i class="fa-brands fa-x-twitter"></i></a>
                 <a href="https://www.instagram.com/statsmalaysia/"><i class="fab fa-instagram"></i></a> 
                 <a href="https://www.youtube.com/channel/UC0CMa71i-wBYmz-HIZ8bOzQ"><i class="fab fa-youtube"></i></a> 
             </div>
