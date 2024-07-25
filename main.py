@@ -107,6 +107,7 @@ st.markdown(
         display: flex;
         align-items: center;
         justify-content: flex-start;
+        align-items: flex-start;
     }
     .header img {
         margin-right: 20px;
