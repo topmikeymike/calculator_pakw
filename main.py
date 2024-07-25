@@ -300,14 +300,14 @@ with col2:
 
 # Footer
 language_dict = {
-    'footer': '© 2024 Kalkulator Perbelanjaan Isi Rumah',
+    'footer': '© 2024 Kalkulator Perbelanjaan Isi Rumah Ver.1.1',
     'footer2': 'BANK IN DULU MAT'
 }
 
 footer_html = f"""
     <div style="text-align:center; padding: 10px;">
         <p style="font-size: 12px; color: grey;">{language_dict['footer']}</p>
-        <p class="footer-text">{language_dict['footer2']}</p>
+        <!-- <p class="footer-text">{language_dict['footer2']}</p> -->
         <p style="font-size: 12px; color: grey;">Ver.1.1</p>
     </div>
 """
