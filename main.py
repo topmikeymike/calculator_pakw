@@ -2,6 +2,7 @@ import streamlit as st
 import pandas as pd
 import uuid
 from household_calculator import collect_household_data, load_data
+import base64
 
 st.set_page_config(
     page_title="Aplikasi Kalkulator PAKW",
@@ -101,10 +102,39 @@ st.markdown(
         padding: 6rem 1rem 10rem !important;  /* Custom padding */
         max-width: 100rem !important;  /* Adjust the max-width */
     }
+    .header {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .header img {
+        margin-right: 20px;
+    }
     </style>
     """,
     unsafe_allow_html=True,
 )
+
+# Function to get image base64
+def get_image_base64(image_path):
+    with open(image_path, "rb") as img_file:
+        return base64.b64encode(img_file.read()).decode()
+
+# Load images and convert to base64
+logo1_base64 = get_image_base64("images/dosm.png")
+logo2_base64 = get_image_base64("images/MM.png")
+logo3_base64 = get_image_base64("images/padu.png")
+
+# Header with logos
+st.markdown("""
+    <div class="header">
+        <img src="data:image/png;base64,{}" width="100">
+        <img src="data:image/png;base64,{}" width="100">
+        <img src="data:image/png;base64,{}" width="100">
+    </div>
+""".format(
+    logo1_base64, logo2_base64, logo3_base64
+), unsafe_allow_html=True)
 
 # Function to reset session state
 def reset_session_state():
@@ -117,7 +147,7 @@ def generate_household_id():
         st.session_state.household_id = uuid.uuid4().hex[:8]  # Generate a random 8-character hex string
     return st.session_state.household_id
 
-# Header
+# Main title
 st.title("Kalkulator Perbelanjaan Isi Rumah 🧮")
 
 st.markdown("<h1 style='font-size:24px; font-weight:bold;'>Perbelanjaan Asas Kehidupan Wajar | (PAKW)</h1>", unsafe_allow_html=True)
