@@ -14,6 +14,7 @@ st.set_page_config(
 st.markdown(
     """
     <style>
+    @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css');
     html {
         font-size: 14px;
     }
@@ -110,6 +111,50 @@ st.markdown(
     .header img {
         margin-right: 20px;
     }
+     .contact-info {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        width: 14%;
+        margin-top: 27px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: stretch;
+    }
+    .contact-text {
+        font-size: 16px;
+        font-weight: bold;
+    }
+    .icons-container {
+        display: flex;
+        gap: 10px;
+    }
+    .icons-container a {
+        color: #000;
+        text-decoration: none;
+    }
+    .icons-container a:hover {
+        color: #007bff;
+    }
+    .header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        align-items: center;
+    }
+    .logos {
+        display: flex;
+        justify-content: flex-start;
+        width: 100%;
+        flex-wrap: nowrap;
+        flex-direction: row;
+        align-content: center;
+        align-items: center;
+    }
+    .logos img {
+        margin-right: 20px;
+    }
     </style>
     """,
     unsafe_allow_html=True,
@@ -128,9 +173,20 @@ logo3_base64 = get_image_base64("images/padu.png")
 # Header with logos
 st.markdown("""
     <div class="header">
-        <img src="data:image/png;base64,{}" width="100">
-        <img src="data:image/png;base64,{}" width="100">
-        <img src="data:image/png;base64,{}" width="100">
+        <div class="logos">
+            <img src="data:image/png;base64,{}" width="100">
+            <img src="data:image/png;base64,{}" width="100">
+            <img src="data:image/png;base64,{}" width="100">
+        </div>
+        <div class="contact-info">
+            <p class="contact-text">HUBUNGI KAMI:</p>
+            <div class="icons-container">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+        </div>
     </div>
 """.format(
     logo1_base64, logo2_base64, logo3_base64
@@ -259,3 +315,4 @@ footer_html = f"""
     </div>
 """
 st.markdown(footer_html, unsafe_allow_html=True)
+
