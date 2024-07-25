@@ -319,7 +319,7 @@ with col2:
                 'NEGERI': 'Negeri',
                 'DAERAH': 'Daerah',
                 'STRATA': 'Strata',
-                'TOTAL PAKW': 'Jumlah PAKW'
+                'TOTAL PAKW': 'PAKW Individu'
             }
             
             # Display selected options in a minimalist table
