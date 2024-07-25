@@ -40,32 +40,33 @@ def collect_household_data(data, generate_household_id):
             # Create dropdown lists for categorical columns for individual member
             # umur_ksh = st.selectbox('UMUR AHLI ISI RUMAH', ["Pilih"] + list(data['UMUR_KSH'].unique()), key=f'UMUR_KSH_{household_id}')
             # Define the mapping for sorting
-                mapping = {
-                    "0-5 BULAN": 0.1,
-                    "6-8 BULAN": 0.2,
-                    "9-11 BULAN": 0.3,
-                    "1-3 TAHUN": 1.5,
-                    "4-6 TAHUN": 5,
-                    "7-9 TAHUN": 8,
-                    "10-12 TAHUN": 11,
-                    "13-15 TAHUN": 14,
-                    "16<18 TAHUN": 17,
-                    "18-29 TAHUN": 24,
-                    "30-59 TAHUN": 44,
-                    "60 TAHUN": 60
-                }
-                
-                # Extract unique age ranges from the data
-                unique_age_ranges = data['UMUR_KSH'].unique()
-                
-                # Sort age ranges based on the mapping
-                sorted_age_ranges = sorted(unique_age_ranges, key=lambda x: mapping.get(x, float('inf')))
-                
-                # Create the selectbox with sorted options
-                umur_ksh = st.selectbox(
-                    'UMUR AHLI ISI RUMAH',
-                    ["Pilih"] + sorted_age_ranges,
-                    key=f'UMUR_KSH_{household_id}'
+            # Define the mapping for sorting
+            mapping = {
+                "0-5 BULAN": 0.1,
+                "6-8 BULAN": 0.2,
+                "9-11 BULAN": 0.3,
+                "1-3 TAHUN": 1.5,
+                "4-6 TAHUN": 5,
+                "7-9 TAHUN": 8,
+                "10-12 TAHUN": 11,
+                "13-15 TAHUN": 14,
+                "16<18 TAHUN": 17,
+                "18-29 TAHUN": 24,
+                "30-59 TAHUN": 44,
+                "60 TAHUN": 60
+            }
+            
+            # Extract unique age ranges from the data
+            unique_age_ranges = data['UMUR_KSH'].unique()
+            
+            # Sort age ranges based on the mapping
+            sorted_age_ranges = sorted(unique_age_ranges, key=lambda x: mapping.get(x, float('inf')))
+            
+            # Create the selectbox with sorted options
+            umur_ksh = st.selectbox(
+                'UMUR AHLI ISI RUMAH',
+                ["Pilih"] + sorted_age_ranges,
+                key=f'UMUR_KSH_{household_id}'
             )
             jantina = st.radio('JANTINA', list(data['JANTINA'].unique()), key=f'JANTINA_{household_id}')
 
