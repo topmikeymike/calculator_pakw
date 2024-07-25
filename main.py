@@ -333,12 +333,9 @@ with col2:
 
             # Remove index by resetting and dropping it
             display_df_no_index = display_df.reset_index(drop=True)
-            
-            # Display the DataFrame without index
-            st.write(display_df_no_index, width=1000)
-            
+
             # Display the DataFrame with new column names
-            # st.dataframe(display_df, width=1000)  # Set width to accommodate all columns
+            st.dataframe(display_df_no_index, width=1000)  # Set width to accommodate all columns
 
             # Display selected options in a minimalist table
             # st.write("<p style='font-size:20px; font-weight:bold;'>Pilihan yang Dipilih:</p>", unsafe_allow_html=True)
