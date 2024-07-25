@@ -305,10 +305,10 @@ language_dict = {
 }
 
 footer_html = f"""
-    <div style="text-align:center; padding: 10px;">
+    <div style="text-align:center; padding: 40px;">
         <p style="font-size: 12px; color: grey;">{language_dict['footer']}</p>
         <!-- <p class="footer-text">{language_dict['footer2']}</p> -->
-        <p style="font-size: 12px; color: grey;">Ver.1.1</p>
+        <!-- <p style="font-size: 12px; color: grey;">Ver.1.1</p> -->
     </div>
 """
 st.markdown(footer_html, unsafe_allow_html=True)
