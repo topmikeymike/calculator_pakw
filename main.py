@@ -228,7 +228,7 @@ def generate_household_id():
     return st.session_state.household_id
 
 # Main title
-st.markdown("<h1 style='text-align: center; text-decoration: underline;'>Kalkulator Kos Sara Hidup 🧮</h1>", unsafe_allow_html=True)
+st.title("Kalkulator Kos Sara Hidup 🧮")
 
 #st.markdown("<h1 style='font-size:24px; font-weight:bold;'>Perbelanjaan Asas Kehidupan Wajar | (PAKW)</h1>", unsafe_allow_html=True)
 st.markdown("<h1 style='font-size:22px;'>Kalkulator ini mengira jumlah perbelanjaan Kos Sara Hidup berdasarkan maklumat yang dimasukkan oleh pengguna.</h1>", unsafe_allow_html=True)
@@ -239,7 +239,8 @@ col1, col2 = st.columns([1, 1])  # Two equal-width columns
 with col1:
     st.markdown("""
     <section class="left-container">
-        <h2 style='font-size:22px;'>KALKULATOR KOS SARA HIDUP</h2>
+        <h2 style='font-size:22px; text-decoration: underline;'>KALKULATOR KOS SARA HIDUP</h2>
+        # st.markdown("<h1 style='text-align: center; text-decoration: underline;'>Kalkulator Kos Sara Hidup 🧮</h1>", unsafe_allow_html=True)
         <ol>
             <li>Kalkulator KSH merupakan inisiatif Kerajaan untuk memaparkan kos perbelanjaan asas kehidupan wajar yang diperlukan oleh isi rumah mengikut negeri, daerah dan strata.</li>
             <li>Data yang dipaparkan adalah kajian yang dilakukan berdasarkan data Laporan Perbelanjaan Isi Rumah 2022.</li>
