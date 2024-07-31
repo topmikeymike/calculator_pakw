@@ -252,8 +252,8 @@ with col1:
     
 
     st.markdown("""
-    <section class="left-container">
     <br></br>
+    <section class="left-container">
         <h2 style='font-size:22px; text-decoration: underline;'>DEFINISI PERBELANJAAN KOS SARA HIDUP WAJAR</h2>
             <p>Amaun perbelanjaan yang diperlukan oleh isi rumah untuk menjalani kehidupan wajar yang dapat memenuhi keperluan dan kehendak serta berpeluang menyertai aktiviti sosial dalam masyarakat.</p>
     </section>
