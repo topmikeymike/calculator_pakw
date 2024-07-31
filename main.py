@@ -229,6 +229,7 @@ def generate_household_id():
 
 # Main title
 st.title("Kalkulator Kos Sara Hidup 🧮")
+st.markdown("_______________________________________")
 
 #st.markdown("<h1 style='font-size:24px; font-weight:bold;'>Perbelanjaan Asas Kehidupan Wajar | (PAKW)</h1>", unsafe_allow_html=True)
 st.markdown("<h1 style='font-size:22px;'>Kalkulator ini mengira jumlah perbelanjaan Kos Sara Hidup berdasarkan maklumat yang dimasukkan oleh pengguna.</h1>", unsafe_allow_html=True)
