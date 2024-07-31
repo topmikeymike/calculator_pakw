@@ -7,8 +7,8 @@ def load_data(file):
     return pd.read_csv(file)
 
 def collect_household_data(data, generate_household_id):
-    st.markdown("<h2 style='font-size:20px;' >Langkah 1 : Jumlah isi rumah</h2>", unsafe_allow_html=True)
-    num_households = st.number_input('Masukkan jumlah isi rumah', min_value=1, value=1, step=1)
+    st.markdown("<h2 style='font-size:20px;' >Langkah 1 : Jumlah ahli isi rumah</h2>", unsafe_allow_html=True)
+    num_households = st.number_input('Masukkan jumlah ahli isi rumah', min_value=1, value=1, step=1)
     selected_options_list = []
     total_pakw_hh = 0
 
@@ -50,7 +50,7 @@ def collect_household_data(data, generate_household_id):
                 "7-9 TAHUN": 8,
                 "10-12 TAHUN": 11,
                 "13-15 TAHUN": 14,
-                "16<18 TAHUN": 17,
+                "16-17 TAHUN": 17,
                 "18-29 TAHUN": 24,
                 "30-59 TAHUN": 44,
                 "60 TAHUN": 60
