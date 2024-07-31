@@ -5,7 +5,7 @@ from household_calculator import collect_household_data, load_data
 import base64
 
 st.set_page_config(
-    page_title="Aplikasi Kalkulator PAKW",
+    page_title="Aplikasi Kalkulator Kos Sara Hidup",
     page_icon="🧊",
     initial_sidebar_state="expanded",
 )
@@ -228,10 +228,10 @@ def generate_household_id():
     return st.session_state.household_id
 
 # Main title
-st.title("Kalkulator Perbelanjaan Isi Rumah 🧮")
+st.title("Kalkulator Kos Sara Hidup 🧮")
 
-st.markdown("<h1 style='font-size:24px; font-weight:bold;'>Perbelanjaan Asas Kehidupan Wajar | (PAKW)</h1>", unsafe_allow_html=True)
-st.markdown("<h2 style='font-size:22px;'>Kalkulator ini mengira jumlah perbelanjaan PAKW berdasarkan input pengguna.</h2>", unsafe_allow_html=True)
+#st.markdown("<h1 style='font-size:24px; font-weight:bold;'>Perbelanjaan Asas Kehidupan Wajar | (PAKW)</h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='font-size:22px;'>Kalkulator ini mengira jumlah perbelanjaan Kos Sara Hidup berdasarkan maklumat yang dimasukkan oleh pengguna.</h1>", unsafe_allow_html=True)
 
 # Container for the description and the calculator
 col1, col2 = st.columns([1, 1])  # Two equal-width columns
@@ -264,19 +264,19 @@ with col2:
     # Add space above the button
     st.markdown('<div class="button-space"></div>', unsafe_allow_html=True)
 
-    if st.button('Kira Jumlah Perbelanjaan Isi Rumah', key='calculate', help='Tekan untuk mengira jumlah perbelanjaan'):
+    if st.button('Kira Jumlah KSH Isi Rumah', key='calculate', help='Tekan untuk mengira jumlah kos sara hidup'):
         st.session_state.calculate_clicked = True
 
     if st.session_state.calculate_clicked:
         if selected_options_list:
-            st.write("<p style='font-size:20px; font-weight:bold;'>Jumlah Perbelanjaan Isi Rumah</p>", unsafe_allow_html=True)
+            st.write("<p style='font-size:20px; font-weight:bold;'>Jumlah Kos Sara Hidup Isi Rumah</p>", unsafe_allow_html=True)
             total_household_expenditure = sum(option['TOTAL PAKW'] for option in selected_options_list)
             st.write(
                 f"""
                 <p style='font-size:16px; font-weight:bold;'>
-                    TOTAL PAKW untuk semua isi rumah: RM {total_household_expenditure:.2f}
+                    Jumlah Kos Sara Hidup Wajar Isi Rumah: RM {total_household_expenditure:.2f}
                     <span class='info-icon'>𝒾
-                        <span class='tooltip'>This is the total expenditure for all households calculated based on the input data.</span>
+                        <span class='tooltip'>This is the total expenditure for your household calculated based on the input data.</span>
                     </span>
                 </p>
                 """,
