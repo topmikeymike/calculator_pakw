@@ -300,7 +300,7 @@ with col2:
                 <p style='font-size:16px; font-weight:bold;'>
                     Jurang Pendapatan dan Kos Sara Hidup Wajar Isi Rumah: - RM XXXX.XX
                     <span class='info-icon'>𝒾
-                        <span class='tooltip'>Jumlah pendapatan isi rumah - Jumlah Kos Sara Hidup Wajar Isi Rumah.</span>
+                        <span class='tooltip'>Jumlah pendapatan isi rumah ditolak dengan Jumlah Kos Sara Hidup Wajar Isi Rumah.</span>
                     </span>
                 </p>
                 """,
