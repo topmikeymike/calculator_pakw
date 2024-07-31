@@ -280,13 +280,13 @@ with col2:
                     </span>
                 </p>
                 <p style='font-size:16px; font-weight:bold;'>
-                    Jumlah Pendapatan: RM XXXX.XX
+                    Jumlah Pendapatan Isi Rumah: RM XXXX.XX
                     <span class='info-icon'>𝒾
                         <span class='tooltip'>This is the total expenditure for your household calculated based on the input data.</span>
                     </span>
                 </p>
                 <p style='font-size:16px; font-weight:bold;'>
-                    <b> Jurang Pendapatan dan Kos Sara Hidup: - RM XXXX.XX </b>
+                    Jurang Pendapatan dan Kos Sara Hidup Wajar Isi Rumah: - RM XXXX.XX
                     <span class='info-icon'>𝒾
                         <span class='tooltip'>This is the total expenditure for your household calculated based on the input data.</span>
                     </span>
