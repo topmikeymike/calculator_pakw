@@ -250,6 +250,39 @@ with col1:
     </section>
     """, unsafe_allow_html=True)
 
+    st.markdown("""
+    <section class="left-container">
+        <h2 style='font-size:22px; text-decoration: underline;'>DEFINISI PERBELANJAAN KOS SARA HIDUP WAJAR</h2>
+        <ol>
+            <li>Amaun perbelanjaan yang diperlukan oleh isi rumah untuk menjalani kehidupan wajar yang dapat memenuhi keperluan dan kehendak serta berpeluang menyertai aktiviti sosial dalam masyarakat.</li>
+        </ol>
+    </section>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <section class="left-container">
+        <h2 style='font-size:22px; text-decoration: underline;'>DEFINISI ISI RUMAH</h2>
+        <ol>
+            <li>Satu kelompok orang yang tinggal bersama-sama dalam satu tempat tinggal atau rumah.</li>
+        </ol>
+    </section>
+    """, unsafe_allow_html=True)
+
+    st.markdown("""
+    <section class="left-container">
+        <h2 style='font-size:22px; text-decoration: underline;'>4 PUNCA PENDAPATAN</h2>
+        <h2 style='font-size:20px; text-decoration: underline;'>1. Pekerjaann Bergaji</h2>
+        <ol>
+            <li>- Pendapatan yang diperoleh daripada pekerjaan bergaji adalah meliputi semua pembayaran hasil penglibatan di dalam pekerjaan sama ada berbentuk wang tunai atau mata benda yang diterima oleh individu di dalam sesebuah isi rumah.</li>
+            <li>Antara komponen pendapatan bergaji ialah:</li>
+            <li> - Gaji yang dibayar majikan</li>
+            <li> - Bonus dan elaun</li>
+            <li> - Makanan percuma atau konsesi</li>
+            <li> - Terimaan lain daripada majikan</li>
+        </ol>
+    </section>
+    """, unsafe_allow_html=True)
+
 with col2:
     # Load the data
     data = load_data('pakw_calculator_referal.csv')
