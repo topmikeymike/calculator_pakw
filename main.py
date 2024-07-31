@@ -269,12 +269,24 @@ with col2:
 
     if st.session_state.calculate_clicked:
         if selected_options_list:
-            st.write("<p style='font-size:20px; font-weight:bold;'>Jumlah Kos Sara Hidup Isi Rumah</p>", unsafe_allow_html=True)
+            st.write("<p style='font-size:20px; font-weight:bold;'>Analisis Kos Sara Hidup Anda :-</p>", unsafe_allow_html=True)
             total_household_expenditure = sum(option['TOTAL PAKW'] for option in selected_options_list)
             st.write(
                 f"""
                 <p style='font-size:16px; font-weight:bold;'>
                     Jumlah Kos Sara Hidup Wajar Isi Rumah: RM {total_household_expenditure:.2f}
+                    <span class='info-icon'>𝒾
+                        <span class='tooltip'>This is the total expenditure for your household calculated based on the input data.</span>
+                    </span>
+                </p>
+                <p style='font-size:16px; font-weight:bold;'>
+                    Jumlah Pendapatan: RM XXXX.XX
+                    <span class='info-icon'>𝒾
+                        <span class='tooltip'>This is the total expenditure for your household calculated based on the input data.</span>
+                    </span>
+                </p>
+                <p style='font-size:16px; font-weight:bold;'>
+                    <b> Jurang Pendapatan dan Kos Sara Hidup: - RM XXXX.XX </b>
                     <span class='info-icon'>𝒾
                         <span class='tooltip'>This is the total expenditure for your household calculated based on the input data.</span>
                     </span>
