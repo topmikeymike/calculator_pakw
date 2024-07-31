@@ -249,6 +249,7 @@ with col1:
         </ol>
     </section>
     """, unsafe_allow_html=True)
+    <br>
 
     st.markdown("""
     <section class="left-container">
