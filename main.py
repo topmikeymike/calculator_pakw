@@ -280,13 +280,13 @@ with col2:
                     </span>
                 </p>
                 <p style='font-size:16px; font-weight:bold;'>
-                    Jumlah Kos Sara Hidup Wajar Isi Rumah - Makanan: RM {total_household_expenditure:.2f}
+                    Jumlah KSH - Makanan: RM XXXX.XX
                     <span class='info-icon'>𝒾
                         <span class='tooltip'>Jumlah Kos Sara Hidup Wajar Isi Rumah - Makanan.</span>
                     </span>
                 </p>
                 <p style='font-size:16px; font-weight:bold;'>
-                    Jumlah Kos Sara Hidup Wajar Isi Rumah - Bukan Makanan: RM {total_household_expenditure:.2f}
+                    Jumlah KSH - Bukan Makanan: RM XXXX.XX
                     <span class='info-icon'>𝒾
                         <span class='tooltip'>Jumlah Kos Sara Hidup Wajar Isi Rumah - Bukan Makanan.</span>
                     </span>
