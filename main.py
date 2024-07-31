@@ -288,9 +288,9 @@ with col2:
             #    st.write(
             #        f"""
             #        <p style='font-size:16px; font-weight:bold;'>
-            #            TOTAL PAKW HH untuk semua isi rumah: RM {selected_options_list[0]["TOTAL PAKW HH"]:.2f}
+            #            Jumlah Kos Sara Hidup Wajar Isi Rumah: RM {selected_options_list[0]["TOTAL PAKW HH"]:.2f}
             #            <span class='info-icon'>𝒾
-            #                <span class='tooltip'>This is the total PAKW for all households.</span>
+            #                <span class='tooltip'>This is the total KSH for your household.</span>
             #            </span>
             #        </p>
             #        """,
@@ -323,19 +323,19 @@ with col2:
             }
             
             # Display selected options in a minimalist table
-            st.write("<p style='font-size:20px; font-weight:bold;'>Pilihan yang Dipilih:</p>", unsafe_allow_html=True)
+            #st.write("<p style='font-size:20px; font-weight:bold;'>Pilihan yang Dipilih:</p>", unsafe_allow_html=True)
             
             # Only select relevant columns for display
-            display_columns = ['UMUR_KSH', 'JANTINA', 'NEGERI', 'DAERAH', 'STRATA', 'TOTAL PAKW']
+            #display_columns = ['UMUR_KSH', 'JANTINA', 'NEGERI', 'DAERAH', 'STRATA', 'TOTAL PAKW']
             
             # Rename columns for display purposes
-            display_df = selected_options_df[display_columns].rename(columns=column_name_mapping)
+            #display_df = selected_options_df[display_columns].rename(columns=column_name_mapping)
 
             # Remove index by resetting and dropping it
-            display_df_no_index = display_df.reset_index(drop=True)
+            #display_df_no_index = display_df.reset_index(drop=True)
 
             # Display the DataFrame with new column names
-            st.dataframe(display_df_no_index, width=1000)  # Set width to accommodate all columns
+            #st.dataframe(display_df_no_index, width=1000)  # Set width to accommodate all columns
 
 
             # Display selected options in a minimalist table
