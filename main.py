@@ -280,15 +280,27 @@ with col2:
                     </span>
                 </p>
                 <p style='font-size:16px; font-weight:bold;'>
+                    Jumlah Kos Sara Hidup Wajar Isi Rumah - Makanan: RM {total_household_expenditure:.2f}
+                    <span class='info-icon'>𝒾
+                        <span class='tooltip'>Jumlah Kos Sara Hidup Wajar Isi Rumah - Makanan.</span>
+                    </span>
+                </p>
+                <p style='font-size:16px; font-weight:bold;'>
+                    Jumlah Kos Sara Hidup Wajar Isi Rumah - Bukan Makanan: RM {total_household_expenditure:.2f}
+                    <span class='info-icon'>𝒾
+                        <span class='tooltip'>Jumlah Kos Sara Hidup Wajar Isi Rumah - Bukan Makanan.</span>
+                    </span>
+                </p>
+                <p style='font-size:16px; font-weight:bold;'>
                     Jumlah Pendapatan Isi Rumah: RM XXXX.XX
                     <span class='info-icon'>𝒾
-                        <span class='tooltip'>This is the total expenditure for your household calculated based on the input data.</span>
+                        <span class='tooltip'>Jumlah Pendapatan Isi Rumah yang merangkumi pendapatan bergaji, pendapatan bekerja sendiri, harta dan pelaburan serta pindahan semasa yang diterima.</span>
                     </span>
                 </p>
                 <p style='font-size:16px; font-weight:bold;'>
                     Jurang Pendapatan dan Kos Sara Hidup Wajar Isi Rumah: - RM XXXX.XX
                     <span class='info-icon'>𝒾
-                        <span class='tooltip'>This is the total expenditure for your household calculated based on the input data.</span>
+                        <span class='tooltip'>Jumlah pendapatan isi rumah - Jumlah Kos Sara Hidup Wajar Isi Rumah.</span>
                     </span>
                 </p>
                 """,
