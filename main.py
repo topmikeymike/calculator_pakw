@@ -247,13 +247,13 @@ with col1:
             <li>Nilai KSH ini merangkumi 14 buah negeri dan 162 daerah pentadbiran beserta strata bandar dan luar bandar.</li>
             <li>Laporan penuh boleh di muat turun di: <a href="https://www.dosm.gov.my/portal-main/online-services?data=6">https://www.dosm.gov.my/portal-main/online-services?data=6</a></li>
         </ol>
-        <br></br>
     </section>
     """, unsafe_allow_html=True)
     
 
     st.markdown("""
     <section class="left-container">
+    <br></br>
         <h2 style='font-size:22px; text-decoration: underline;'>DEFINISI PERBELANJAAN KOS SARA HIDUP WAJAR</h2>
             <p>Amaun perbelanjaan yang diperlukan oleh isi rumah untuk menjalani kehidupan wajar yang dapat memenuhi keperluan dan kehendak serta berpeluang menyertai aktiviti sosial dalam masyarakat.</p>
     </section>
