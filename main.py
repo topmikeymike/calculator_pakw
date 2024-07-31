@@ -267,13 +267,13 @@ with col1:
     st.markdown("""
     <section class="left-container">
         <h2 style='font-size:22px; text-decoration: underline;'>4 PUNCA PENDAPATAN</h2>
-        <h2 style='font-size:20px; text-decoration: underline;'>1. Pekerjaann Bergaji</h2>
+        <h2 style='font-size:20px; text-decoration: underline;'>1. Pekerjaan Bergaji</h2>
         <p>- Pendapatan yang diperoleh daripada pekerjaan bergaji adalah meliputi semua pembayaran hasil penglibatan di dalam pekerjaan sama ada berbentuk wang tunai atau mata benda yang diterima oleh individu di dalam sesebuah isi rumah.</p>
             <div>Antara komponen pendapatan bergaji ialah:</div>
-            <span> - Gaji yang dibayar majikan</span>
-            <span> - Bonus dan elaun</span>
-            <span> - Makanan percuma atau konsesi</span>
-            <span> - Terimaan lain daripada majikan</span>
+            <div> - Gaji yang dibayar majikan</div>
+            <div> - Bonus dan elaun</div>
+            <div> - Makanan percuma atau konsesi</div>
+            <div> - Terimaan lain daripada majikan</div>
     </section>
     """, unsafe_allow_html=True)
 
