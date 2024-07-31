@@ -240,7 +240,6 @@ with col1:
     st.markdown("""
     <section class="left-container">
         <h2 style='font-size:22px; text-decoration: underline;'>KALKULATOR KOS SARA HIDUP</h2>
-        # st.markdown("<h1 style='text-align: center; text-decoration: underline;'>Kalkulator Kos Sara Hidup 🧮</h1>", unsafe_allow_html=True)
         <ol>
             <li>Kalkulator KSH merupakan inisiatif Kerajaan untuk memaparkan kos perbelanjaan asas kehidupan wajar yang diperlukan oleh isi rumah mengikut negeri, daerah dan strata.</li>
             <li>Data yang dipaparkan adalah kajian yang dilakukan berdasarkan data Laporan Perbelanjaan Isi Rumah 2022.</li>
