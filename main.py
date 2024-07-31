@@ -260,6 +260,7 @@ with col1:
     """, unsafe_allow_html=True)
 
     st.markdown("""
+    <p></p>
     <section class="left-container">
         <h2 style='font-size:22px; text-decoration: underline;'>DEFINISI ISI RUMAH</h2>
         <p>Satu kelompok orang yang tinggal bersama-sama dalam satu tempat tinggal atau rumah.</p>
@@ -267,6 +268,7 @@ with col1:
     """, unsafe_allow_html=True)
 
     st.markdown("""
+    <p></p>
     <section class="left-container">
         <h2 style='font-size:22px; text-decoration: underline;'>4 PUNCA PENDAPATAN</h2>
         <h2 style='font-size:20px; text-decoration: underline;'>1. Pekerjaan Bergaji</h2>
