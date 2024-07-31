@@ -247,9 +247,10 @@ with col1:
             <li>Nilai KSH ini merangkumi 14 buah negeri dan 162 daerah pentadbiran beserta strata bandar dan luar bandar.</li>
             <li>Laporan penuh boleh di muat turun di: <a href="https://www.dosm.gov.my/portal-main/online-services?data=6">https://www.dosm.gov.my/portal-main/online-services?data=6</a></li>
         </ol>
+        <br></br>
     </section>
     """, unsafe_allow_html=True)
-    <br>
+    
 
     st.markdown("""
     <section class="left-container">
