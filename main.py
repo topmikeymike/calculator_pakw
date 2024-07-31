@@ -278,6 +278,30 @@ with col1:
             <div> - Bonus dan elaun</div>
             <div> - Makanan percuma atau konsesi</div>
             <div> - Terimaan lain daripada majikan</div>
+
+        <h2 style='font-size:20px; text-decoration: underline;'>2. Bekerja Sendiri</h2>
+        <p>- Pendapatan yang diperoleh di kalangan mereka yang merupakan majikan yang mempunyai pekerja atau mereka yang bekerja sendiri sama ada secara berdaftar atau tidak berdaftar.</p>
+            <div>Aktiviti pendapatan daripada bekerja sendiri adalah berkaitan:</div>
+            <div> - Pertanian dan perikanan</div>
+            <div> - Teknologi maklumat dan komunikasi (ICT)</div>
+            <div> - Bukan pertanian dan bukan ICT (Pengangkutan; Lain-lain)</div>
+            <div> - Kegunaan sendiri</div>
+
+        <h2 style='font-size:20px; text-decoration: underline;'>3. Harta dan Pelaburan</h2>
+        <p>- Pendapatan daripada harta ialah pendapatan yang diperoleh daripada pemilikan aset yang disediakan untuk kegunaan orang lain.</p>
+            <div>Contoh pendapatan daripada harta: </div>
+            <div> - Sewaan rumah</div>
+            <div> - Sewaan bangunan komersial</div>
+            <div> - Sewaan tanah</div>
+        <p>- Pendapatan daripada pelaburan adalah termasuk faedah dan dividen daripada simpanan.</p>
+
+        <h2 style='font-size:20px; text-decoration: underline;'>4. Pindahan Semasa Diterima</h2>
+        <p>- Pendapatan daripada pindahan semasa diterima terdiri daripada wang tunai, barangan atau perkhidmatan dan boleh diterima daripada isi rumah lain, kerajaan atau badan-badan kebajikan sama ada dari dalam atau luar negara.</p>
+            <div>Contoh pendapatan daripada pindahan semasa diterima:</div>
+            <div> - Kiriman wang daripada isi rumah lain</div>
+            <div> - Pencen</div>
+            <div> - Nafkah</div>
+            <div> - Bantuan yang diterima secara berkala</div>
     </section>
     """, unsafe_allow_html=True)
 
