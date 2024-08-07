@@ -37,9 +37,6 @@ def collect_household_data(data, generate_household_id):
         household_uuid = generate_household_id()  # Generate unique household ID for the session
     
         with st.expander(f'Isi Rumah {household_id + 1}'):
-            # Create dropdown lists for categorical columns for individual member
-            # umur_ksh = st.selectbox('UMUR AHLI ISI RUMAH', ["Pilih"] + list(data['UMUR_KSH'].unique()), key=f'UMUR_KSH_{household_id}')
-            # Define the mapping for sorting
             # Define the mapping for sorting
             mapping = {
                 "0-5 BULAN": 0.1,
@@ -71,7 +68,6 @@ def collect_household_data(data, generate_household_id):
             jantina = st.radio('JANTINA', list(data['JANTINA'].unique()), key=f'JANTINA_{household_id}')
 
             # Calculate total expenditure for the household
-            
             if (umur_ksh != "Pilih" and jantina != "Pilih" and selected_negeri != "Pilih" and 
                 selected_daerah != "Pilih" and selected_strata != "Pilih"):
                 
@@ -93,7 +89,7 @@ def collect_household_data(data, generate_household_id):
                         adjusted_mean_p_rent +
                         filtered_data['Mean(p_lain2)'].values[0]
                     )
-
+                    
                     selected_options = {
                         'HOUSEHOLD_ID': household_uuid,
                         'UMUR_KSH': umur_ksh,
@@ -105,6 +101,27 @@ def collect_household_data(data, generate_household_id):
                         'TOTAL_HH': num_households  # Add total number of households
                     }
 
+                    # Prompt for additional income details if specific age ranges are selected
+                    if umur_ksh in ["18-29 TAHUN", "30-59 TAHUN", "60 TAHUN"]:
+                        st.markdown("<h2 style='font-size:20px;' >Langkah 6 : Masukkan pendapatan</h2>", unsafe_allow_html=True)
+                        pendapatan_bergaji = st.number_input('PENDAPATAN BERGAJI', min_value=0, value=0, step=1, key=f'PENDAPATAN_BERGAJI_{household_id}')
+                        pendapatan_bekerja_sendiri = st.number_input('PENDAPATAN BEKERJA SENDIRI', min_value=0, value=0, step=1, key=f'PENDAPATAN_BEKERJA_SENDIRI_{household_id}')
+                        pendapatan_dari_harta_pelaburan = st.number_input('PENDAPATAN DARI HARTA PELABURAN', min_value=0, value=0, step=1, key=f'PENDAPATAN_DARI_HARTA_PELABURAN_{household_id}')
+                        pindahan_semasa = st.number_input('PINDAHAN SEMASA', min_value=0, value=0, step=1, key=f'PINDAHAN_SEMASA_{household_id}')
+
+                        total_income = (pendapatan_bergaji + pendapatan_bekerja_sendiri + 
+                                        pendapatan_dari_harta_pelaburan + pindahan_semasa)
+                        
+                        total_pakw -= total_income
+
+                        selected_options.update({
+                            'PENDAPATAN BERGAJI': pendapatan_bergaji,
+                            'PENDAPATAN BEKERJA SENDIRI': pendapatan_bekerja_sendiri,
+                            'PENDAPATAN DARI HARTA PELABURAN': pendapatan_dari_harta_pelaburan,
+                            'PINDAHAN SEMASA': pindahan_semasa,
+                            'TOTAL INCOME': total_income
+                        })
+
                     selected_options_list.append(selected_options)
                     total_pakw_hh += total_pakw  # Accumulate total PAKW HH
 
@@ -114,3 +131,8 @@ def collect_household_data(data, generate_household_id):
             option['TOTAL PAKW HH'] = total_pakw_hh
 
     return selected_options_list
+
+# Example usage
+# data = load_data('path_to_your_csv_file.csv')
+# selected_options = collect_household_data(data, lambda: str(uuid.uuid4()))
+# st.write(selected_options)
