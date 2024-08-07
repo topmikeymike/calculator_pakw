@@ -329,7 +329,7 @@ with col2:
             st.write("<p style='font-size:20px; font-weight:bold;'>Analisis Kos Sara Hidup Anda :-</p>", unsafe_allow_html=True)
             total_household_expenditure = sum(option['TOTAL PAKW'] for option in selected_options_list)
             total_income = sum(option.get('TOTAL INCOME', 0) for option in selected_options_list)
-            total_expenditure_minus_income = total_household_expenditure - total_income
+            total_expenditure_minus_income = total_income - total_household_expenditure
             st.write(
                 f"""
                 <p style='font-size:16px; font-weight:bold;'>
