@@ -50,7 +50,7 @@ def collect_household_data(data, generate_household_id):
                 "7-9 TAHUN": 8,
                 "10-12 TAHUN": 11,
                 "13-15 TAHUN": 14,
-                "16<18 TAHUN": 17,
+                "16-17 TAHUN": 17,
                 "18-29 TAHUN": 24,
                 "30-59 TAHUN": 44,
                 "60 TAHUN": 60
