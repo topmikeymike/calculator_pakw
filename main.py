@@ -357,7 +357,7 @@ with col2:
                     </span>
                 </p>
                 <p style='font-size:16px; font-weight:bold;'>
-                    Jurang Pendapatan dan Kos Sara Hidup Wajar Isi Rumah: - RM {total_expenditure_minus_income:.2f}
+                    Jurang Pendapatan dan Kos Sara Hidup Wajar Isi Rumah: RM {total_expenditure_minus_income:.2f}
                     <span class='info-icon'>𝒾
                         <span class='tooltip'>Jumlah pendapatan isi rumah ditolak dengan Jumlah Kos Sara Hidup Wajar Isi Rumah.</span>
                     </span>
