@@ -328,6 +328,7 @@ with col2:
         if selected_options_list:
             st.write("<p style='font-size:20px; font-weight:bold;'>Analisis Kos Sara Hidup Anda :-</p>", unsafe_allow_html=True)
             total_household_expenditure = sum(option['TOTAL PAKW'] for option in selected_options_list)
+            total_income_hh = sum(option['TOTAL INCOME'] for option in selected_options_list)
             st.write(
                 f"""
                 <p style='font-size:16px; font-weight:bold;'>
@@ -349,7 +350,7 @@ with col2:
                     </span>
                 </p>
                 <p style='font-size:16px; font-weight:bold;'>
-                    Jumlah Pendapatan Isi Rumah: RM XXXX.XX
+                    Jumlah Pendapatan Isi Rumah: RM {total_income_hh:.2f}
                     <span class='info-icon'>𝒾
                         <span class='tooltip'>Jumlah Pendapatan Isi Rumah yang merangkumi pendapatan bergaji, pendapatan bekerja sendiri, harta dan pelaburan serta pindahan semasa yang diterima.</span>
                     </span>
