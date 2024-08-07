@@ -328,7 +328,8 @@ with col2:
         if selected_options_list:
             st.write("<p style='font-size:20px; font-weight:bold;'>Analisis Kos Sara Hidup Anda :-</p>", unsafe_allow_html=True)
             total_household_expenditure = sum(option['TOTAL PAKW'] for option in selected_options_list)
-            total_income_hh = sum(option['TOTAL INCOME'] for option in selected_options_list)
+            total_income = sum(option.get('TOTAL INCOME', 0) for option in selected_options)
+            total_expenditure_minus_income = total_household_expenditure - total_income
             st.write(
                 f"""
                 <p style='font-size:16px; font-weight:bold;'>
@@ -350,13 +351,13 @@ with col2:
                     </span>
                 </p>
                 <p style='font-size:16px; font-weight:bold;'>
-                    Jumlah Pendapatan Isi Rumah: RM {total_income_hh:.2f}
+                    Jumlah Pendapatan Isi Rumah: RM {total_income:.2f}
                     <span class='info-icon'>𝒾
                         <span class='tooltip'>Jumlah Pendapatan Isi Rumah yang merangkumi pendapatan bergaji, pendapatan bekerja sendiri, harta dan pelaburan serta pindahan semasa yang diterima.</span>
                     </span>
                 </p>
                 <p style='font-size:16px; font-weight:bold;'>
-                    Jurang Pendapatan dan Kos Sara Hidup Wajar Isi Rumah: - RM XXXX.XX
+                    Jurang Pendapatan dan Kos Sara Hidup Wajar Isi Rumah: - RM {total_expenditure_minus_income:.2f}
                     <span class='info-icon'>𝒾
                         <span class='tooltip'>Jumlah pendapatan isi rumah ditolak dengan Jumlah Kos Sara Hidup Wajar Isi Rumah.</span>
                     </span>
