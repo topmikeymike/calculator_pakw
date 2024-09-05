@@ -89,6 +89,14 @@ def collect_household_data(data, generate_household_id):
                         adjusted_mean_p_rent +
                         filtered_data['Mean(p_lain2)'].values[0]
                     )
+
+                    total_pakw_mknn = (
+                        filtered_data['Mean(TOTAL_PAKW_MAKANAN)'].values[0]
+                    )
+
+                    total_pakw_xmknn = (
+                        total_pakw - total_pakw_mknn
+                    )
                     
                     selected_options = {
                         'HOUSEHOLD_ID': household_uuid,
@@ -98,6 +106,8 @@ def collect_household_data(data, generate_household_id):
                         'DAERAH': selected_daerah,
                         'STRATA': selected_strata,
                         'TOTAL PAKW': total_pakw,
+                        'TOTAL MAKANAN': total_pakw_mknn,
+                        'TOTAL X MAKANAN': total_pakw_xmknn,
                         'TOTAL_HH': num_households  # Add total number of households
                     }
 
@@ -124,6 +134,8 @@ def collect_household_data(data, generate_household_id):
 
                     selected_options_list.append(selected_options)
                     total_pakw_hh += total_pakw  # Accumulate total PAKW HH
+                    total_pakw_hh += total_pakw_mknn 
+                    total_pakw_hh += total_pakw_xmknn 
 
     # Set TOTAL PAKW HH for each entry if there are multiple households
     if num_households > 1:
