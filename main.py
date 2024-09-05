@@ -329,6 +329,8 @@ with col2:
             st.write("<p style='font-size:20px; font-weight:bold;'>Analisis Kos Sara Hidup Anda :-</p>", unsafe_allow_html=True)
             total_household_expenditure = sum(option['TOTAL PAKW'] for option in selected_options_list)
             total_income = sum(option.get('TOTAL INCOME', 0) for option in selected_options_list)
+            total_makanan = sum(option.get('TOTAL MAKANAN', 0) for option in selected_options_list)
+            total_xmakanan = sum(option.get('TOTAL X MAKANAN', 0) for option in selected_options_list)
             total_expenditure_minus_income = total_income - total_household_expenditure
             st.write(
                 f"""
@@ -339,13 +341,13 @@ with col2:
                     </span>
                 </p>
                 <p style='font-size:16px; font-weight:bold;'>
-                    Jumlah KSH - Makanan: RM XXXX.XX
+                    Jumlah KSH - Makanan: RM {total_makanan:.2f}
                     <span class='info-icon'>𝒾
                         <span class='tooltip'>Jumlah Kos Sara Hidup Wajar Isi Rumah - Makanan.</span>
                     </span>
                 </p>
                 <p style='font-size:16px; font-weight:bold;'>
-                    Jumlah KSH - Bukan Makanan: RM XXXX.XX
+                    Jumlah KSH - Bukan Makanan: RM {total_xmakanan:.2f}
                     <span class='info-icon'>𝒾
                         <span class='tooltip'>Jumlah Kos Sara Hidup Wajar Isi Rumah - Bukan Makanan.</span>
                     </span>
