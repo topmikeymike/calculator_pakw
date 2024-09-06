@@ -433,9 +433,17 @@ with col2:
             
             # st.dataframe(selected_options_df[display_columns], width=1000)  # Set width to accommodate all columns
 
+        #if st.button('Kira Semula'):
+         #   reset_session_state()
+          #  st.experimental_rerun()
+        
         if st.button('Kira Semula'):
+        try:
             reset_session_state()
             st.experimental_rerun()
+        except Exception as e:
+            st.error(f"An error occurred: {e}")
+
 
 # Footer
 language_dict = {
