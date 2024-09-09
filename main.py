@@ -438,7 +438,7 @@ with col2:
             #st.experimental_rerun()
         
         # This block should only be executed if the page is refreshed or button is clicked
-        if st.button('Kira Semula'):
+        if st.button('Refresh'):
             reset_session_state()
             st.experimental_rerun()
         
