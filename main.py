@@ -437,7 +437,14 @@ with col2:
             #reset_session_state()
             #st.experimental_rerun()
         
+        # Check if the session is being refreshed or if the reset button is clicked
+        if st.experimental_get_query_params():  # This will capture a browser refresh event
+            reset_session_state()
+            st.experimental_rerun()
         
+        if st.button('Kira Semula'):
+            reset_session_state()
+            st.experimental_rerun()
 
 # Footer
 language_dict = {
