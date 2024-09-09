@@ -449,7 +449,7 @@ with col2:
         # Trigger rerun in the next cycle if the flag is set
         if st.session_state.get('rerun_trigger', False):
             st.session_state['rerun_trigger'] = False  # Reset the flag
-            st.experimental_rerun()  # Rerun the script safely
+            #st.experimental_rerun()  # Rerun the script safely
         
         # Optional: Handle page refresh via query parameters
         query_params = st.experimental_get_query_params()
