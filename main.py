@@ -440,7 +440,12 @@ with col2:
         # Check if the reset button is clicked
         if st.button('Kira Semula'):
             reset_session_state()  # Reset session state
-            st.experimental_rerun()  # Rerun immediately to apply the reset
+            st.session_state['rerun_trigger'] = True  # Set a flag to trigger rerun
+        
+        # Trigger rerun in the next cycle if the flag is set
+        if 'rerun_trigger' in st.session_state and st.session_state['rerun_trigger']:
+            st.session_state['rerun_trigger'] = False  # Reset the flag
+            st.experimental_rerun()  # Rerun the script
         
         # Optional: Guard to check if page refreshes or query parameters exist
         query_params = st.experimental_get_query_params()
@@ -448,8 +453,9 @@ with col2:
         # If query parameters are detected, trigger reset and rerun immediately
         if query_params:
             reset_session_state()
+            st.session_state['rerun_trigger'] = True
             st.experimental_rerun()
-
+            
 # Footer
 language_dict = {
     'footer': '© 2024 Kalkulator Perbelanjaan Isi Rumah Ver.1.1',
