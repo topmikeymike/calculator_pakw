@@ -457,7 +457,7 @@ with col2:
         if query_params and not st.session_state.get('rerun_trigger', False):
             reset_session_state()
             st.session_state['rerun_trigger'] = True
-            st.experimental_rerun()
+            #st.experimental_rerun()
             
 # Footer
 language_dict = {
