@@ -437,21 +437,17 @@ with col2:
             #reset_session_state()
             #st.experimental_rerun()
         
-        # This block should only be executed if the page is refreshed or button is clicked
-        if st.button('Refresh'):
-            reset_session_state()
-            st.experimental_rerun()
+        # Check if the reset button is clicked
+        if st.button('Kira Semula'):
+            reset_session_state()  # Reset session state
+            st.experimental_rerun()  # Rerun immediately to apply the reset
         
-        # Optional: Guard against rerunning unnecessarily at the start of the script
-        if 'rerun_flag' not in st.session_state:
-            st.session_state['rerun_flag'] = False
-        
-        # Check if query parameters exist (indicating a possible page refresh)
+        # Optional: Guard to check if page refreshes or query parameters exist
         query_params = st.experimental_get_query_params()
         
-        if query_params and not st.session_state['rerun_flag']:
+        # If query parameters are detected, trigger reset and rerun immediately
+        if query_params:
             reset_session_state()
-            st.session_state['rerun_flag'] = True
             st.experimental_rerun()
 
 # Footer
