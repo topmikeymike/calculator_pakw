@@ -216,9 +216,13 @@ st.markdown("""
     logo1_base64, logo2_base64, logo3_base64
 ), unsafe_allow_html=True)
 
-# Function to reset session state
+# Initialize session state variables
+if 'rerun_trigger' not in st.session_state:
+    st.session_state['rerun_trigger'] = False
+
+# Function to reset the session state
 def reset_session_state():
-    for key in st.session_state.keys():
+    for key in list(st.session_state.keys()):
         del st.session_state[key]
 
 # Function to generate a unique household ID for the session
@@ -438,20 +442,19 @@ with col2:
             #st.experimental_rerun()
         
         # Check if the reset button is clicked
-        if st.button('Kira Semula'):
+        if st.button('Refresh'):
             reset_session_state()  # Reset session state
             st.session_state['rerun_trigger'] = True  # Set a flag to trigger rerun
         
         # Trigger rerun in the next cycle if the flag is set
-        if 'rerun_trigger' in st.session_state and st.session_state['rerun_trigger']:
+        if st.session_state.get('rerun_trigger', False):
             st.session_state['rerun_trigger'] = False  # Reset the flag
-            st.experimental_rerun()  # Rerun the script
+            st.experimental_rerun()  # Rerun the script safely
         
-        # Optional: Guard to check if page refreshes or query parameters exist
+        # Optional: Handle page refresh via query parameters
         query_params = st.experimental_get_query_params()
         
-        # If query parameters are detected, trigger reset and rerun immediately
-        if query_params:
+        if query_params and not st.session_state.get('rerun_trigger', False):
             reset_session_state()
             st.session_state['rerun_trigger'] = True
             st.experimental_rerun()
