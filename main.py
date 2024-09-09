@@ -442,7 +442,7 @@ with col2:
             #st.experimental_rerun()
         
         # Check if the reset button is clicked
-        if st.button('Kira Semula'):
+        if st.button('Refresh'):
             reset_session_state()  # Reset session state
             st.session_state['rerun_trigger'] = True  # Set a flag to trigger rerun
         
