@@ -217,8 +217,8 @@ st.markdown("""
 ), unsafe_allow_html=True)
 
 # Initialize session state variables
-if 'rerun_trigger' not in st.session_state:
-    st.session_state['rerun_trigger'] = False
+# if 'rerun_trigger' not in st.session_state:
+    # st.session_state['rerun_trigger'] = False
 
 # Function to reset the session state
 def reset_session_state():
@@ -442,22 +442,23 @@ with col2:
             #st.experimental_rerun()
         
         # Check if the reset button is clicked
-        if st.button('Refresh'):
+        if st.button('Kira Semula'):
             reset_session_state()  # Reset session state
             st.session_state['rerun_trigger'] = True  # Set a flag to trigger rerun
         
         # Trigger rerun in the next cycle if the flag is set
-        if st.session_state.get('rerun_trigger', False):
+        if 'rerun_trigger' in st.session_state and st.session_state['rerun_trigger']:
             st.session_state['rerun_trigger'] = False  # Reset the flag
-            #st.experimental_rerun()  # Rerun the script safely
+            # st.experimental_rerun()  # Rerun the script
         
-        # Optional: Handle page refresh via query parameters
+        # Optional: Guard to check if page refreshes or query parameters exist
         query_params = st.experimental_get_query_params()
         
-        if query_params and not st.session_state.get('rerun_trigger', False):
+        # If query parameters are detected, trigger reset and rerun immediately
+        if query_params:
             reset_session_state()
             st.session_state['rerun_trigger'] = True
-            #st.experimental_rerun()
+            # st.experimental_rerun()
             
 # Footer
 language_dict = {
