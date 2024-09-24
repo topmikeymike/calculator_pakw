@@ -111,8 +111,8 @@ def collect_household_data(data, generate_household_id):
         #     jantina = st.radio('JANTINA', list(data['JANTINA'].unique()), key=f'JANTINA_{household_id}')
 
             # Calculate total expenditure for the household
-            if (umur_ksh != "Pilih" and jantina != "Pilih" and selected_negeri != "Pilih" and 
-                selected_daerah != "Pilih" and selected_strata != "Pilih"):
+            # if (umur_ksh != "Pilih" and jantina != "Pilih" and selected_negeri != "Pilih" and 
+            #     selected_daerah != "Pilih" and selected_strata != "Pilih"):
                 
                 filtered_data = data[
                     (data['UMUR_KSH'] == umur_ksh) & 
