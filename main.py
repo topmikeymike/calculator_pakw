@@ -358,13 +358,13 @@ with col2:
                 </p>
                 <!--
                  <p style='font-size:16px; font-weight:bold;'>
-                     Jumlah Pendapatan Isi Rumah: RM {total_income:.2f}
+                     Jumlah Pendapatan Isi Rumah: RM 
                      <span class='info-icon'>𝒾
                          <span class='tooltip'>Jumlah Pendapatan Isi Rumah yang merangkumi pendapatan bergaji, pendapatan bekerja sendiri, harta dan pelaburan serta pindahan semasa yang diterima.</span>
                      </span>
                  </p>
                  <p style='font-size:16px; font-weight:bold;'>
-                     Jurang Pendapatan dan Kos Sara Hidup Wajar Isi Rumah: RM {total_expenditure_minus_income:.2f}
+                     Jurang Pendapatan dan Kos Sara Hidup Wajar Isi Rumah: RM 
                      <span class='info-icon'>𝒾
                          <span class='tooltip'>Jumlah pendapatan isi rumah ditolak dengan Jumlah Kos Sara Hidup Wajar Isi Rumah.</span>
                      </span>
