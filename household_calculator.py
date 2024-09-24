@@ -124,13 +124,13 @@ def collect_household_data(data, generate_household_id):
                         
                     #     total_pakw -= total_income
 
-                        selected_options.update({
-                            'PENDAPATAN BERGAJI': pendapatan_bergaji,
-                            'PENDAPATAN BEKERJA SENDIRI': pendapatan_bekerja_sendiri,
-                            'PENDAPATAN DARI HARTA PELABURAN': pendapatan_dari_harta_pelaburan,
-                            'PINDAHAN SEMASA': pindahan_semasa,
-                            'TOTAL INCOME': total_income
-                        })
+                        # selected_options.update({
+                        #     'PENDAPATAN BERGAJI': pendapatan_bergaji,
+                        #     'PENDAPATAN BEKERJA SENDIRI': pendapatan_bekerja_sendiri,
+                        #     'PENDAPATAN DARI HARTA PELABURAN': pendapatan_dari_harta_pelaburan,
+                        #     'PINDAHAN SEMASA': pindahan_semasa,
+                        #     'TOTAL INCOME': total_income
+                        # })
 
                     selected_options_list.append(selected_options)
                     total_pakw_hh += total_pakw  # Accumulate total PAKW HH
