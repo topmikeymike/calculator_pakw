@@ -59,26 +59,35 @@ def collect_household_data(data, generate_household_id):
         for household_id in range(num_households):
             household_uuid = generate_household_id()  # Generate unique household ID for the session
         
-            with st.expander(f'Bilangan isi rumah'):
-                # Loop through the sorted age ranges
-                for age_range in sorted_age_ranges:
-                    st.markdown(f"### {age_range}")
-                    
-                    # Filter the data for the current age range
-                    # This assumes that UMUR_KSH column contains age ranges, similar to the mapping
-                    filtered_data = data[data['UMUR_KSH'] == age_range]
-                    
-                    # Create number inputs for each gender based on the filtered data
-                    for gender in filtered_data['JANTINA'].unique():
-                        if gender == 'LELAKI':
-                            num_lelaki = st.number_input(f'Bilangan Lelaki untuk {age_range}', min_value=0, key=f'lelaki_{age_range}_{household_id}')
-                        elif gender == 'PEREMPUAN':
-                            num_perempuan = st.number_input(f'Bilangan Perempuan untuk {age_range}', min_value=0, key=f'perempuan_{age_range}_{household_id}')
-                    
-                    # Optionally, you can calculate the total number of members for each age range
-                    total_members = (num_lelaki if 'num_lelaki' in locals() else 0) + (num_perempuan if 'num_perempuan' in locals() else 0)
-                    st.write(f"Jumlah Ahli: {total_members}")
-
+            st.markdown(f"### Isi Rumah {household_id + 1}")
+            
+            # Create a header row to mimic the table in the image
+            cols = st.columns([2, 1, 1])  # Define the width of each column (UMUR/JANTINA, LELAKI, PEREMPUAN)
+            cols[0].markdown("**UMUR/JANTINA**")
+            cols[1].markdown("**LELAKI**")
+            cols[2].markdown("**PEREMPUAN**")
+            
+            # Loop through the sorted age ranges
+            for age_range in sorted_age_ranges:
+                # Create a row for each age range
+                cols = st.columns([2, 1, 1])
+                cols[0].markdown(f"**{age_range}**")
+                
+                # Filter the data for the current age range and gender
+                # Assuming each row in 'data' corresponds to a specific gender/age range
+                num_lelaki = 0
+                num_perempuan = 0
+        
+                # If JANTINA is LELAKI, display number input for male
+                if 'LELAKI' in data['JANTINA'].values:
+                    num_lelaki = cols[1].number_input(f'Lelaki for {age_range}', min_value=0, key=f'lelaki_{age_range}_{household_id}', label_visibility="collapsed")
+                
+                # If JANTINA is PEREMPUAN, display number input for female
+                if 'PEREMPUAN' in data['JANTINA'].values:
+                    num_perempuan = cols[2].number_input(f'Perempuan for {age_range}', min_value=0, key=f'perempuan_{age_range}_{household_id}', label_visibility="collapsed")
+        
+                # Optionally, store or process these values as needed
+                total_members = num_lelaki + num_perempuan
         # with st.expander(f'Isi Rumah {household_id + 1}'):
         #     # Define the mapping for sorting
         #     mapping = {
