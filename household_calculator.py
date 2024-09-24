@@ -102,24 +102,24 @@ def collect_household_data(data, generate_household_id):
                 (data['STRATA'] == selected_strata)
             ]
 
-                if not filtered_data.empty:
-                    total_mean_p_rent = filtered_data['Mean(p_rent)'].sum()
-                    mean_p_rent = total_mean_p_rent / num_households
-                    adjusted_mean_p_rent = mean_p_rent * (num_households ** 0.4745)
+            if not filtered_data.empty:
+                total_mean_p_rent = filtered_data['Mean(p_rent)'].sum()
+                mean_p_rent = total_mean_p_rent / num_households
+                adjusted_mean_p_rent = mean_p_rent * (num_households ** 0.4745)
 
-                    total_pakw = (
-                        filtered_data['Mean(TOTAL_PAKW_MAKANAN)'].values[0] +
-                        adjusted_mean_p_rent +
-                        filtered_data['Mean(p_lain2)'].values[0]
-                    )
+                total_pakw = (
+                    filtered_data['Mean(TOTAL_PAKW_MAKANAN)'].values[0] +
+                    adjusted_mean_p_rent +
+                    filtered_data['Mean(p_lain2)'].values[0]
+                )
 
-                    total_pakw_mknn = (
-                        filtered_data['Mean(TOTAL_PAKW_MAKANAN)'].values[0]
-                    )
+                total_pakw_mknn = (
+                    filtered_data['Mean(TOTAL_PAKW_MAKANAN)'].values[0]
+                )
 
-                    total_pakw_xmknn = (
-                        total_pakw - total_pakw_mknn
-                    )
+                total_pakw_xmknn = (
+                    total_pakw - total_pakw_mknn
+                )
                     
                     selected_options = {
                         'HOUSEHOLD_ID': household_uuid,
