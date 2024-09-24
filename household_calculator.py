@@ -111,18 +111,18 @@ def collect_household_data(data, generate_household_id):
                         'TOTAL_HH': num_households  # Add total number of households
                     }
 
-                    # Prompt for additional income details if specific age ranges are selected
-                    if umur_ksh in ["18-29 TAHUN", "30-59 TAHUN", ">60 TAHUN"]:
-                        st.markdown("<h2 style='font-size:20px;' >Langkah 6 : Masukkan pendapatan</h2>", unsafe_allow_html=True)
-                        pendapatan_bergaji = st.number_input('PENDAPATAN BERGAJI', min_value=0, value=0, step=1, key=f'PENDAPATAN_BERGAJI_{household_id}')
-                        pendapatan_bekerja_sendiri = st.number_input('PENDAPATAN BEKERJA SENDIRI', min_value=0, value=0, step=1, key=f'PENDAPATAN_BEKERJA_SENDIRI_{household_id}')
-                        pendapatan_dari_harta_pelaburan = st.number_input('PENDAPATAN DARI HARTA PELABURAN', min_value=0, value=0, step=1, key=f'PENDAPATAN_DARI_HARTA_PELABURAN_{household_id}')
-                        pindahan_semasa = st.number_input('PINDAHAN SEMASA', min_value=0, value=0, step=1, key=f'PINDAHAN_SEMASA_{household_id}')
+                    # # Prompt for additional income details if specific age ranges are selected
+                    # if umur_ksh in ["18-29 TAHUN", "30-59 TAHUN", ">60 TAHUN"]:
+                    #     st.markdown("<h2 style='font-size:20px;' >Langkah 6 : Masukkan pendapatan</h2>", unsafe_allow_html=True)
+                    #     pendapatan_bergaji = st.number_input('PENDAPATAN BERGAJI', min_value=0, value=0, step=1, key=f'PENDAPATAN_BERGAJI_{household_id}')
+                    #     pendapatan_bekerja_sendiri = st.number_input('PENDAPATAN BEKERJA SENDIRI', min_value=0, value=0, step=1, key=f'PENDAPATAN_BEKERJA_SENDIRI_{household_id}')
+                    #     pendapatan_dari_harta_pelaburan = st.number_input('PENDAPATAN DARI HARTA PELABURAN', min_value=0, value=0, step=1, key=f'PENDAPATAN_DARI_HARTA_PELABURAN_{household_id}')
+                    #     pindahan_semasa = st.number_input('PINDAHAN SEMASA', min_value=0, value=0, step=1, key=f'PINDAHAN_SEMASA_{household_id}')
 
-                        total_income = (pendapatan_bergaji + pendapatan_bekerja_sendiri + 
-                                        pendapatan_dari_harta_pelaburan + pindahan_semasa)
+                    #     total_income = (pendapatan_bergaji + pendapatan_bekerja_sendiri + 
+                    #                     pendapatan_dari_harta_pelaburan + pindahan_semasa)
                         
-                        total_pakw -= total_income
+                    #     total_pakw -= total_income
 
                         selected_options.update({
                             'PENDAPATAN BERGAJI': pendapatan_bergaji,
