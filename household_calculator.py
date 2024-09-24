@@ -59,7 +59,7 @@ def collect_household_data(data, generate_household_id):
         for household_id in range(num_households):
             household_uuid = generate_household_id()  # Generate unique household ID for the session
         
-            with st.expander(f'Isi Rumah {household_id + 1}'):
+            with st.expander(f'Bilangan isi rumah'):
                 # Loop through the sorted age ranges
                 for age_range in sorted_age_ranges:
                     st.markdown(f"### {age_range}")
