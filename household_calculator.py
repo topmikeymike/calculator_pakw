@@ -36,7 +36,7 @@ def collect_household_data(data, generate_household_id):
     for household_id in range(num_households):
         household_uuid = generate_household_id()  # Generate unique household ID for the session
 
-        # Define the age range mapping
+       # Define the age range mapping
         mapping = {
             "0-5 BULAN": 0.1,
             "6-8 BULAN": 0.2,
@@ -67,27 +67,19 @@ def collect_household_data(data, generate_household_id):
             cols[1].markdown("**LELAKI**")
             cols[2].markdown("**PEREMPUAN**")
             
-            # Loop through the sorted age ranges
+            # Loop through the sorted age ranges and generate input fields for each
             for age_range in sorted_age_ranges:
                 # Create a row for each age range
                 cols = st.columns([2, 1, 1])
                 cols[0].markdown(f"**{age_range}**")
                 
-                # Filter the data for the current age range and gender
-                # Assuming each row in 'data' corresponds to a specific gender/age range
-                num_lelaki = 0
-                num_perempuan = 0
-        
-                # If JANTINA is LELAKI, display number input for male
-                if 'LELAKI' in data['JANTINA'].values:
-                    num_lelaki = cols[1].number_input(f'Lelaki for {age_range}', min_value=0, key=f'lelaki_{age_range}_{household_id}', label_visibility="collapsed")
+                # Number inputs for LELAKI and PEREMPUAN for each age range
+                num_lelaki = cols[1].number_input(f'Lelaki for {age_range}', min_value=0, key=f'lelaki_{age_range}_{household_id}', label_visibility="collapsed")
+                num_perempuan = cols[2].number_input(f'Perempuan for {age_range}', min_value=0, key=f'perempuan_{age_range}_{household_id}', label_visibility="collapsed")
                 
-                # If JANTINA is PEREMPUAN, display number input for female
-                if 'PEREMPUAN' in data['JANTINA'].values:
-                    num_perempuan = cols[2].number_input(f'Perempuan for {age_range}', min_value=0, key=f'perempuan_{age_range}_{household_id}', label_visibility="collapsed")
-        
-                # Optionally, store or process these values as needed
+                # You can save or process these values as necessary
                 total_members = num_lelaki + num_perempuan
+                
         # with st.expander(f'Isi Rumah {household_id + 1}'):
         #     # Define the mapping for sorting
         #     mapping = {
