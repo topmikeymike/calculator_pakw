@@ -44,13 +44,13 @@ def collect_household_data(data, generate_household_id):
         cols[2].markdown("**PEREMPUAN**")
         
         # Extract unique age ranges from the data
-        umur_ksh = data['UMUR_KSH'].unique()
+        unique_age_ranges = data['UMUR_KSH'].unique()
         
         # Loop through the unique age ranges and generate input fields for each
-        for age_range in unique_age_ranges:
+        for umur_ksh in unique_age_ranges:
             # Create a row for each age range
             row_cols = st.columns([2, 1, 1])
-            row_cols[0].markdown(f"**{age_range}**")
+            row_cols[0].markdown(f"**{umur_ksh}**")
             
             # Number inputs for LELAKI and PEREMPUAN for each age range
             num_lelaki = row_cols[1].number_input(f'Lelaki {age_range}', min_value=0, key=f'lelaki_{age_range}_{household_id}', label_visibility="collapsed")
