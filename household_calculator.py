@@ -36,103 +36,82 @@ def collect_household_data(data, generate_household_id):
     for household_id in range(num_households):
         household_uuid = generate_household_id()  # Generate unique household ID for the session
 
-
-        # Create a header row to mimic the table in the image
-        cols = st.columns([2, 1, 1])  # Define the width of each column (UMUR/JANTINA, LELAKI, PEREMPUAN)
-        cols[0].markdown("**UMUR/JANTINA**")
-        cols[1].markdown("**LELAKI**")
-        cols[2].markdown("**PEREMPUAN**")
         
-        # Extract unique age ranges from the data
-        unique_age_ranges = data['UMUR_KSH'].unique()
-        
-        # Loop through the unique age ranges and generate input fields for each
-        for umur_ksh in unique_age_ranges:
-            # Create a row for each age range
-            row_cols = st.columns([2, 1, 1])
-            row_cols[0].markdown(f"**{umur_ksh}**")
+    
+        with st.expander(f'Isi Rumah {household_id + 1}'):
+            # Define the mapping for sorting
+            mapping = {
+                "0-5 BULAN": 0.1,
+                "6-8 BULAN": 0.2,
+                "9-11 BULAN": 0.3,
+                "1-3 TAHUN": 1.5,
+                "4-6 TAHUN": 5,
+                "7-9 TAHUN": 8,
+                "10-12 TAHUN": 11,
+                "13-15 TAHUN": 14,
+                "16<18 TAHUN": 17,
+                "18-29 TAHUN": 24,
+                "30-59 TAHUN": 44,
+                ">60 TAHUN": 60
+            }
             
-            # Number inputs for LELAKI and PEREMPUAN for each age range
-            num_lelaki = row_cols[1].number_input(f'Lelaki {age_range}', min_value=0, key=f'lelaki_{age_range}_{household_id}', label_visibility="collapsed")
-            num_perempuan = row_cols[2].number_input(f'Perempuan {age_range}', min_value=0, key=f'perempuan_{age_range}_{household_id}', label_visibility="collapsed")
+            # Extract unique age ranges from the data
+            unique_age_ranges = data['UMUR_KSH'].unique()
             
-            # You can save or process these values as necessary
-            total_members = num_lelaki + num_perempuan
-                
-        # with st.expander(f'Isi Rumah {household_id + 1}'):
-        #     # Define the mapping for sorting
-        #     mapping = {
-        #         "0-5 BULAN": 0.1,
-        #         "6-8 BULAN": 0.2,
-        #         "9-11 BULAN": 0.3,
-        #         "1-3 TAHUN": 1.5,
-        #         "4-6 TAHUN": 5,
-        #         "7-9 TAHUN": 8,
-        #         "10-12 TAHUN": 11,
-        #         "13-15 TAHUN": 14,
-        #         "16<18 TAHUN": 17,
-        #         "18-29 TAHUN": 24,
-        #         "30-59 TAHUN": 44,
-        #         ">60 TAHUN": 60
-        #     }
+            # Sort age ranges based on the mapping
+            sorted_age_ranges = sorted(unique_age_ranges, key=lambda x: mapping.get(x, float('inf')))
             
-        #     # Extract unique age ranges from the data
-        #     unique_age_ranges = data['UMUR_KSH'].unique()
-            
-        #     # Sort age ranges based on the mapping
-        #     sorted_age_ranges = sorted(unique_age_ranges, key=lambda x: mapping.get(x, float('inf')))
-            
-        #     # Create the selectbox with sorted options
-        #     umur_ksh = st.selectbox(
-        #         'UMUR AHLI ISI RUMAH',
-        #         ["Pilih"] + sorted_age_ranges,
-        #         key=f'UMUR_KSH_{household_id}'
-        #     )
-        #     jantina = st.radio('JANTINA', list(data['JANTINA'].unique()), key=f'JANTINA_{household_id}')
+            # Create the selectbox with sorted options
+            umur_ksh = st.selectbox(
+                'UMUR AHLI ISI RUMAH',
+                ["Pilih"] + sorted_age_ranges,
+                key=f'UMUR_KSH_{household_id}'
+            )
+            jantina = st.radio('JANTINA', list(data['JANTINA'].unique()), key=f'JANTINA_{household_id}')
 
             # Calculate total expenditure for the household
-            # if (umur_ksh != "Pilih" and jantina != "Pilih" and selected_negeri != "Pilih" and 
-            #     selected_daerah != "Pilih" and selected_strata != "Pilih"):
+            if (umur_ksh != "Pilih" and jantina != "Pilih" and selected_negeri != "Pilih" and 
+                selected_daerah != "Pilih" and selected_strata != "Pilih"):
                 
-            filtered_data = data[
-                (data['UMUR_KSH'] == umur_ksh) & 
-                (data['JANTINA'] == jantina) &
-                (data['NEGERI'] == selected_negeri) &
-                (data['DAERAH'] == selected_daerah) &
-                (data['STRATA'] == selected_strata)
-            ]
+                filtered_data = data[
+                    (data['UMUR_KSH'] == umur_ksh) & 
+                    (data['JANTINA'] == jantina) &
+                    (data['NEGERI'] == selected_negeri) &
+                    (data['DAERAH'] == selected_daerah) &
+                    (data['STRATA'] == selected_strata)
+                ]
 
-            if not filtered_data.empty:
-                total_mean_p_rent = filtered_data['Mean(p_rent)'].sum()
-                mean_p_rent = total_mean_p_rent / num_households
-                adjusted_mean_p_rent = mean_p_rent * (num_households ** 0.4745)
+                if not filtered_data.empty:
+                    total_mean_p_rent = filtered_data['Mean(p_rent)'].sum()
+                    mean_p_rent = total_mean_p_rent / num_households
+                    adjusted_mean_p_rent = mean_p_rent * (num_households ** 0.4745)
 
-                total_pakw = (
-                    filtered_data['Mean(TOTAL_PAKW_MAKANAN)'].values[0] +
-                    adjusted_mean_p_rent +
-                    filtered_data['Mean(p_lain2)'].values[0]
-                )
+                    total_pakw = (
+                        filtered_data['Mean(TOTAL_PAKW_MAKANAN)'].values[0] +
+                        adjusted_mean_p_rent +
+                        filtered_data['Mean(p_lain2)'].values[0]
+                    )
 
-                total_pakw_mknn = (
-                    filtered_data['Mean(TOTAL_PAKW_MAKANAN)'].values[0]
-                )
+                    total_pakw_mknn = (
+                        filtered_data['Mean(TOTAL_PAKW_MAKANAN)'].values[0]
+                    )
 
-                total_pakw_xmknn = (
-                    total_pakw - total_pakw_mknn
-                )
+                    total_pakw_xmknn = (
+                        total_pakw - total_pakw_mknn
+                    )
                     
-                selected_options = {
-                    'HOUSEHOLD_ID': household_uuid,
-                    'UMUR_KSH': umur_ksh,
-                    'JANTINA': jantina,
-                    'NEGERI': selected_negeri,
-                    'DAERAH': selected_daerah,
-                    'STRATA': selected_strata,
-                    'TOTAL PAKW': total_pakw,
-                    'TOTAL MAKANAN': total_pakw_mknn,
-                    'TOTAL X MAKANAN': total_pakw_xmknn,
-                    'TOTAL_HH': num_households  # Add total number of households
-                }
+                    selected_options = {
+                        'HOUSEHOLD_ID': household_uuid,
+                        'UMUR_KSH': umur_ksh,
+                        'JANTINA': jantina,
+                        'NEGERI': selected_negeri,
+                        'DAERAH': selected_daerah,
+                        'STRATA': selected_strata,
+                        'TOTAL PAKW': total_pakw,
+                        'TOTAL MAKANAN': total_pakw_mknn,
+                        'TOTAL X MAKANAN': total_pakw_xmknn,
+                        'TOTAL_HH': num_households  # Add total number of households
+                    }
 
                     # # Prompt for additional income details if specific age ranges are selected
                     # if umur_ksh in ["18-29 TAHUN", "30-59 TAHUN", ">60 TAHUN"]:
@@ -155,10 +134,10 @@ def collect_household_data(data, generate_household_id):
                         #     'TOTAL INCOME': total_income
                         # })
 
-                selected_options_list.append(selected_options)
-                total_pakw_hh += total_pakw  # Accumulate total PAKW HH
-                total_pakw_hh += total_pakw_mknn 
-                total_pakw_hh += total_pakw_xmknn 
+                    selected_options_list.append(selected_options)
+                    total_pakw_hh += total_pakw  # Accumulate total PAKW HH
+                    total_pakw_hh += total_pakw_mknn 
+                    total_pakw_hh += total_pakw_xmknn 
 
     # Set TOTAL PAKW HH for each entry if there are multiple households
     if num_households > 1:
