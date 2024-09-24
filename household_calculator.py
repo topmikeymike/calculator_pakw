@@ -36,9 +36,6 @@ def collect_household_data(data, generate_household_id):
     for household_id in range(num_households):
         household_uuid = generate_household_id()  # Generate unique household ID for the session
 
-        # Loop over the number of households
-        for household_id in range(num_households):
-        st.markdown(f"### Isi Rumah ")
 
         # Create a header row to mimic the table in the image
         cols = st.columns([2, 1, 1])  # Define the width of each column (UMUR/JANTINA, LELAKI, PEREMPUAN)
