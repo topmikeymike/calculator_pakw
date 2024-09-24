@@ -36,49 +36,28 @@ def collect_household_data(data, generate_household_id):
     for household_id in range(num_households):
         household_uuid = generate_household_id()  # Generate unique household ID for the session
 
-       # Define the age range mapping
-        mapping = {
-            "0-5 BULAN": 0.1,
-            "6-8 BULAN": 0.2,
-            "9-11 BULAN": 0.3,
-            "1-3 TAHUN": 1.5,
-            "4-6 TAHUN": 5,
-            "7-9 TAHUN": 8,
-            "10-12 TAHUN": 11,
-            "13-15 TAHUN": 14,
-            "16<18 TAHUN": 17,
-            "18-29 TAHUN": 24,
-            "30-59 TAHUN": 44,
-            ">60 TAHUN": 60
-        }
+
+        # Create a header row to mimic the table in the image
+        cols = st.columns([2, 1, 1])  # Define the width of each column (UMUR/JANTINA, LELAKI, PEREMPUAN)
+        cols[0].markdown("**UMUR/JANTINA**")
+        cols[1].markdown("**LELAKI**")
+        cols[2].markdown("**PEREMPUAN**")
         
-        # Define the sorted age ranges based on the mapping
-        sorted_age_ranges = sorted(mapping.keys(), key=lambda x: mapping.get(x, float('inf')))
+        # Extract unique age ranges from the data
+        unique_age_ranges = data['UMUR_KSH'].unique()
         
-        # Loop over the number of households
-        for household_id in range(num_households):
-            household_uuid = generate_household_id()  # Generate unique household ID for the session
-        
-            st.markdown(f"### Isi Rumah {household_id + 1}")
+        # Loop through the unique age ranges and generate input fields for each
+        for age_range in unique_age_ranges:
+            # Create a row for each age range
+            row_cols = st.columns([2, 1, 1])
+            row_cols[0].markdown(f"**{age_range}**")
             
-            # Create a header row to mimic the table in the image
-            cols = st.columns([2, 1, 1])  # Define the width of each column (UMUR/JANTINA, LELAKI, PEREMPUAN)
-            cols[0].markdown("**UMUR/JANTINA**")
-            cols[1].markdown("**LELAKI**")
-            cols[2].markdown("**PEREMPUAN**")
+            # Number inputs for LELAKI and PEREMPUAN for each age range
+            num_lelaki = row_cols[1].number_input(f'Lelaki {age_range}', min_value=0, key=f'lelaki_{age_range}_{household_id}', label_visibility="collapsed")
+            num_perempuan = row_cols[2].number_input(f'Perempuan {age_range}', min_value=0, key=f'perempuan_{age_range}_{household_id}', label_visibility="collapsed")
             
-            # Loop through the sorted age ranges and generate input fields for each
-            for age_range in sorted_age_ranges:
-                # Create a row for each age range
-                cols = st.columns([2, 1, 1])
-                cols[0].markdown(f"**{age_range}**")
-                
-                # Number inputs for LELAKI and PEREMPUAN for each age range
-                num_lelaki = cols[1].number_input(f'Lelaki for {age_range}', min_value=0, key=f'lelaki_{age_range}_{household_id}', label_visibility="collapsed")
-                num_perempuan = cols[2].number_input(f'Perempuan for {age_range}', min_value=0, key=f'perempuan_{age_range}_{household_id}', label_visibility="collapsed")
-                
-                # You can save or process these values as necessary
-                total_members = num_lelaki + num_perempuan
+            # You can save or process these values as necessary
+            total_members = num_lelaki + num_perempuan
                 
         # with st.expander(f'Isi Rumah {household_id + 1}'):
         #     # Define the mapping for sorting
