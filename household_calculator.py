@@ -35,37 +35,80 @@ def collect_household_data(data, generate_household_id):
     st.markdown("<h2 style='font-size:20px;' >Langkah 5 : Masukkan maklumat ahli isi rumah</h2>", unsafe_allow_html=True)
     for household_id in range(num_households):
         household_uuid = generate_household_id()  # Generate unique household ID for the session
-    
-        with st.expander(f'Isi Rumah {household_id + 1}'):
-            # Define the mapping for sorting
-            mapping = {
-                "0-5 BULAN": 0.1,
-                "6-8 BULAN": 0.2,
-                "9-11 BULAN": 0.3,
-                "1-3 TAHUN": 1.5,
-                "4-6 TAHUN": 5,
-                "7-9 TAHUN": 8,
-                "10-12 TAHUN": 11,
-                "13-15 TAHUN": 14,
-                "16<18 TAHUN": 17,
-                "18-29 TAHUN": 24,
-                "30-59 TAHUN": 44,
-                ">60 TAHUN": 60
-            }
+
+        # Define the age range mapping
+        mapping = {
+            "0-5 BULAN": 0.1,
+            "6-8 BULAN": 0.2,
+            "9-11 BULAN": 0.3,
+            "1-3 TAHUN": 1.5,
+            "4-6 TAHUN": 5,
+            "7-9 TAHUN": 8,
+            "10-12 TAHUN": 11,
+            "13-15 TAHUN": 14,
+            "16<18 TAHUN": 17,
+            "18-29 TAHUN": 24,
+            "30-59 TAHUN": 44,
+            ">60 TAHUN": 60
+        }
+        
+        # Define the sorted age ranges based on the mapping
+        sorted_age_ranges = sorted(mapping.keys(), key=lambda x: mapping.get(x, float('inf')))
+        
+        # Loop over the number of households
+        for household_id in range(num_households):
+            household_uuid = generate_household_id()  # Generate unique household ID for the session
+        
+            with st.expander(f'Isi Rumah {household_id + 1}'):
+                # Loop through the sorted age ranges
+                for age_range in sorted_age_ranges:
+                    st.markdown(f"### {age_range}")
+                    
+                    # Filter the data for the current age range
+                    # This assumes that UMUR_KSH column contains age ranges, similar to the mapping
+                    filtered_data = data[data['UMUR_KSH'] == age_range]
+                    
+                    # Create number inputs for each gender based on the filtered data
+                    for gender in filtered_data['JANTINA'].unique():
+                        if gender == 'LELAKI':
+                            num_lelaki = st.number_input(f'Bilangan Lelaki untuk {age_range}', min_value=0, key=f'lelaki_{age_range}_{household_id}')
+                        elif gender == 'PEREMPUAN':
+                            num_perempuan = st.number_input(f'Bilangan Perempuan untuk {age_range}', min_value=0, key=f'perempuan_{age_range}_{household_id}')
+                    
+                    # Optionally, you can calculate the total number of members for each age range
+                    total_members = (num_lelaki if 'num_lelaki' in locals() else 0) + (num_perempuan if 'num_perempuan' in locals() else 0)
+                    st.write(f"Jumlah Ahli: {total_members}")
+
+        # with st.expander(f'Isi Rumah {household_id + 1}'):
+        #     # Define the mapping for sorting
+        #     mapping = {
+        #         "0-5 BULAN": 0.1,
+        #         "6-8 BULAN": 0.2,
+        #         "9-11 BULAN": 0.3,
+        #         "1-3 TAHUN": 1.5,
+        #         "4-6 TAHUN": 5,
+        #         "7-9 TAHUN": 8,
+        #         "10-12 TAHUN": 11,
+        #         "13-15 TAHUN": 14,
+        #         "16<18 TAHUN": 17,
+        #         "18-29 TAHUN": 24,
+        #         "30-59 TAHUN": 44,
+        #         ">60 TAHUN": 60
+        #     }
             
-            # Extract unique age ranges from the data
-            unique_age_ranges = data['UMUR_KSH'].unique()
+        #     # Extract unique age ranges from the data
+        #     unique_age_ranges = data['UMUR_KSH'].unique()
             
-            # Sort age ranges based on the mapping
-            sorted_age_ranges = sorted(unique_age_ranges, key=lambda x: mapping.get(x, float('inf')))
+        #     # Sort age ranges based on the mapping
+        #     sorted_age_ranges = sorted(unique_age_ranges, key=lambda x: mapping.get(x, float('inf')))
             
-            # Create the selectbox with sorted options
-            umur_ksh = st.selectbox(
-                'UMUR AHLI ISI RUMAH',
-                ["Pilih"] + sorted_age_ranges,
-                key=f'UMUR_KSH_{household_id}'
-            )
-            jantina = st.radio('JANTINA', list(data['JANTINA'].unique()), key=f'JANTINA_{household_id}')
+        #     # Create the selectbox with sorted options
+        #     umur_ksh = st.selectbox(
+        #         'UMUR AHLI ISI RUMAH',
+        #         ["Pilih"] + sorted_age_ranges,
+        #         key=f'UMUR_KSH_{household_id}'
+        #     )
+        #     jantina = st.radio('JANTINA', list(data['JANTINA'].unique()), key=f'JANTINA_{household_id}')
 
             # Calculate total expenditure for the household
             if (umur_ksh != "Pilih" and jantina != "Pilih" and selected_negeri != "Pilih" and 
