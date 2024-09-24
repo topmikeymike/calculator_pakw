@@ -94,13 +94,13 @@ def collect_household_data(data, generate_household_id):
             # if (umur_ksh != "Pilih" and jantina != "Pilih" and selected_negeri != "Pilih" and 
             #     selected_daerah != "Pilih" and selected_strata != "Pilih"):
                 
-                filtered_data = data[
-                    (data['UMUR_KSH'] == umur_ksh) & 
-                    (data['JANTINA'] == jantina) &
-                    (data['NEGERI'] == selected_negeri) &
-                    (data['DAERAH'] == selected_daerah) &
-                    (data['STRATA'] == selected_strata)
-                ]
+            filtered_data = data[
+                (data['UMUR_KSH'] == umur_ksh) & 
+                (data['JANTINA'] == jantina) &
+                (data['NEGERI'] == selected_negeri) &
+                (data['DAERAH'] == selected_daerah) &
+                (data['STRATA'] == selected_strata)
+            ]
 
                 if not filtered_data.empty:
                     total_mean_p_rent = filtered_data['Mean(p_rent)'].sum()
