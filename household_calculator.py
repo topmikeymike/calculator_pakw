@@ -44,7 +44,7 @@ def collect_household_data(data, generate_household_id):
         cols[2].markdown("**PEREMPUAN**")
         
         # Extract unique age ranges from the data
-        unique_age_ranges = data['UMUR_KSH'].unique()
+        umur_ksh = data['UMUR_KSH'].unique()
         
         # Loop through the unique age ranges and generate input fields for each
         for age_range in unique_age_ranges:
