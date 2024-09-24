@@ -121,18 +121,18 @@ def collect_household_data(data, generate_household_id):
                     total_pakw - total_pakw_mknn
                 )
                     
-                    selected_options = {
-                        'HOUSEHOLD_ID': household_uuid,
-                        'UMUR_KSH': umur_ksh,
-                        'JANTINA': jantina,
-                        'NEGERI': selected_negeri,
-                        'DAERAH': selected_daerah,
-                        'STRATA': selected_strata,
-                        'TOTAL PAKW': total_pakw,
-                        'TOTAL MAKANAN': total_pakw_mknn,
-                        'TOTAL X MAKANAN': total_pakw_xmknn,
-                        'TOTAL_HH': num_households  # Add total number of households
-                    }
+                selected_options = {
+                    'HOUSEHOLD_ID': household_uuid,
+                    'UMUR_KSH': umur_ksh,
+                    'JANTINA': jantina,
+                    'NEGERI': selected_negeri,
+                    'DAERAH': selected_daerah,
+                    'STRATA': selected_strata,
+                    'TOTAL PAKW': total_pakw,
+                    'TOTAL MAKANAN': total_pakw_mknn,
+                    'TOTAL X MAKANAN': total_pakw_xmknn,
+                    'TOTAL_HH': num_households  # Add total number of households
+                }
 
                     # # Prompt for additional income details if specific age ranges are selected
                     # if umur_ksh in ["18-29 TAHUN", "30-59 TAHUN", ">60 TAHUN"]:
@@ -155,10 +155,10 @@ def collect_household_data(data, generate_household_id):
                         #     'TOTAL INCOME': total_income
                         # })
 
-                    selected_options_list.append(selected_options)
-                    total_pakw_hh += total_pakw  # Accumulate total PAKW HH
-                    total_pakw_hh += total_pakw_mknn 
-                    total_pakw_hh += total_pakw_xmknn 
+                selected_options_list.append(selected_options)
+                total_pakw_hh += total_pakw  # Accumulate total PAKW HH
+                total_pakw_hh += total_pakw_mknn 
+                total_pakw_hh += total_pakw_xmknn 
 
     # Set TOTAL PAKW HH for each entry if there are multiple households
     if num_households > 1:
